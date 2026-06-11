@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://edelstahl-tuerklingel.de" crossorigin>
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
-<link rel="preload" as="image" href="XDM10.png" fetchpriority="high">
+<link rel="preload" as="image" href="xdm10_hero.png" fetchpriority="high">
 
 <!-- ─── Open Graph ─── -->
 <meta property="og:type" content="product">
@@ -623,7 +623,8 @@ ul{list-style:none}
 ─────────────────────────────────────────────────────────── */
 .hero{
   position:relative;overflow:hidden;
-  background-image:var(--gradient-brand);
+  background:#000;
+  background-image:linear-gradient(90deg, #01292A 0%, #011a1b 35%, #050505 70%, #000 100%);
   display:flex;flex-direction:column;
   min-height:0;
   color:var(--white);
@@ -631,12 +632,13 @@ ul{list-style:none}
 .hero .label{color:rgba(255,255,255,0.7)}
 .hero-ambient1{
   position:absolute;inset:0;
-  background:radial-gradient(ellipse at 70% 30%, #01292A 0%, transparent 60%);
-  opacity:0.6;
+  background:radial-gradient(ellipse at 80% 50%, rgba(92,219,211,0.07) 0%, transparent 55%);
+  pointer-events:none;
 }
 .hero-ambient2{
   position:absolute;inset:0;
   background:radial-gradient(ellipse at 100% 100%, #000 0%, transparent 70%);
+  pointer-events:none;
 }
 .hero-grid{
   position:relative;z-index:10;flex:1;
@@ -693,22 +695,15 @@ ul{list-style:none}
 
 .hero-product{
   grid-column:span 12;
-  will-change:transform,filter;
-  transition:filter .1s;
 }
 @media(min-width:768px){
   .hero-product{
-    position:absolute;right:0;top:50%;transform:translateY(-38%);
+    position:absolute;right:0;top:50%;transform:translateY(-50%);
     width:55vw;max-width:42.5rem;z-index:0;            /* 680px */
   }
 }
 @media(min-width:1024px){.hero-product{width:50vw;max-width:45rem}}    /* 720px */
 @media(min-width:1440px){.hero-product{width:50vw;max-width:50rem}}    /* 800px */
-.hero-product .glow{
-  position:absolute;inset:-2.5rem;
-  background:rgba(92,219,211,0.2);
-  filter:blur(5rem);border-radius:50%;
-}
 .hero-product img{
   position:relative;width:100%;height:auto;
 }
@@ -2316,8 +2311,7 @@ ul{list-style:none}
     </div>
 
     <div class="hero-product" id="heroProduct">
-      <div class="glow" aria-hidden="true"></div>
-      <img src="XDM10.png" alt="Metzler XDM10 Video-Türsprechanlage 2-Draht-BUS in RAL 7016 Anthrazit" width="840" height="840" fetchpriority="high" decoding="async" loading="eager">
+      <img src="xdm10_hero.png" alt="Metzler XDM10 Video-Türsprechanlage 2-Draht-BUS in RAL 7016 Anthrazit" width="476" height="420" fetchpriority="high" decoding="async" loading="eager">
     </div>
   </div>
 
@@ -3611,15 +3605,8 @@ ul{list-style:none}
     });
   }
   function animate(){
-    heroY = lerp(heroY, targetHeroY, 0.08);
-    heroRot = lerp(heroRot, targetHeroRot, 0.06);
-    heroScale = lerp(heroScale, targetHeroScale, 0.08);
-    heroBlur = lerp(heroBlur, targetHeroBlur, 0.08);
-    if(heroProduct){
-      /* Baseline shift: 38% up (matches main-page.html top:50%/translateY(-38%)); parallax stacks on top. */
-    heroProduct.style.transform = 'translateY(-38%) translateY('+heroY+'px) rotate('+heroRot+'deg) scale('+heroScale+')';
-      heroProduct.style.filter = 'blur('+heroBlur+'px)';
-    }
+    /* Parallax disabled on hero product — image stays still on scroll.
+       Text-only parallax is still handled by onScroll() via [data-parallax]. */
     requestAnimationFrame(animate);
   }
   if(window.matchMedia('(min-width:768px)').matches){
