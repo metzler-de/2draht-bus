@@ -1365,14 +1365,24 @@ ul{list-style:none}
   text-decoration:underline;white-space:nowrap;
 }
 
-/* Mobile (<768px): borderless product cards, no inner padding, 15px gap */
+/* Mobile (<768px): borderless product cards, no inner padding,
+   horizontal gap = outer section padding, vertical gap = 2× horizontal */
 @media(max-width:47.99rem){
-  .ds-product-cards{gap:0.9375rem}                      /* 15px */
+  .ds-product-cards{
+    column-gap:var(--content-pad-x);                    /* matches section L/R padding */
+    row-gap:calc(var(--content-pad-x) * 2);             /* twice the horizontal */
+  }
   .ds-product-card{
     border:none;padding:0;
     background:transparent;border-radius:0;
   }
   .ds-product-card:hover{box-shadow:none}
+  .ds-pc-badges{display:none}                           /* hide 2-Draht-BUS / Komplettset labels */
+  .ds-pc-title{
+    font-size:0.875rem;                                 /* 14px */
+    line-height:1.2rem;                                 /* tighter to match smaller size */
+    height:auto;                                        /* drop the fixed 3-line clamp height */
+  }
 }
 
 /* ──────────────────────────────────────────────────────────
