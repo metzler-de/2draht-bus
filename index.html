@@ -1249,16 +1249,6 @@ ul{list-style:none}
 @media(min-width:768px){.ds-product-cards{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:24rem){.ds-product-cards{grid-template-columns:1fr;gap:1rem}} /* tiny phones — one card per row */
 
-/* Mobile (<768px): borderless cards, no inner padding, 15px gap between cards */
-@media(max-width:47.99rem){
-  .ds-product-cards{gap:0.9375rem}                      /* 15px */
-  .ds-product-card{
-    border:none;padding:0;
-    background:transparent;border-radius:0;
-  }
-  .ds-product-card:hover{box-shadow:none}
-}
-
 .ds-product-card{
   display:flex;flex-direction:column;gap:0.9375rem;   /* 15px */
   background:var(--white);
@@ -1373,6 +1363,16 @@ ul{list-style:none}
   line-height:1.375rem;
   color:rgba(0,0,0,0.8);
   text-decoration:underline;white-space:nowrap;
+}
+
+/* Mobile (<768px): borderless product cards, no inner padding, 15px gap */
+@media(max-width:47.99rem){
+  .ds-product-cards{gap:0.9375rem}                      /* 15px */
+  .ds-product-card{
+    border:none;padding:0;
+    background:transparent;border-radius:0;
+  }
+  .ds-product-card:hover{box-shadow:none}
 }
 
 /* ──────────────────────────────────────────────────────────
