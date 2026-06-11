@@ -1464,6 +1464,12 @@ ul{list-style:none}
 .is-featured .spec-value{
   font-size:1.75rem;letter-spacing:-0.03em;
 }
+/* At mobile/tablet widths, drop the featured-card emphasis so all values share one size */
+@media(max-width:56.25rem){
+  .is-featured .spec-value{
+    font-size:1.25rem;letter-spacing:-0.02em;
+  }
+}
 .spec-value small{
   display:block;
   font-size:0.8125rem;font-weight:400;
@@ -1985,6 +1991,26 @@ ul{list-style:none}
   .product-btn{width:100%}
 
   .footer-grid{margin-bottom:3rem}
+
+  /* ── Mobile heading scale — every heading rendered 30% smaller than desktop ── */
+  .hero h1{font-size:clamp(1.4rem, 5vw, 2.0125rem)}      /* was clamp(2,5vw,2.875) */
+  .hero-subhead{font-size:clamp(0.7875rem, 2vw, 1.05rem)}/* if present */
+  .upgrade-header h2,
+  .topo-title,
+  .modernize-left h2,
+  .upgrade-benefits h3,
+  .products-header h2,
+  .specs-header h2,
+  .faq-header h2{font-size:2.0125rem;line-height:1.18}    /* 2.875rem × 0.7 */
+  .topo-headline{font-size:2.0125rem}
+  .upgrade-step h3{font-size:0.875rem}                   /* was 1.25rem */
+  .topo-stat-val{font-size:1.75rem}                      /* topo stat numbers — keep balanced */
+  .topo-sub{font-size:0.875rem}
+  .ds-pc-name,
+  .ds-pc-title,
+  .product-card-info h3{font-size:1.05rem}
+  .specs-header h2,
+  .faq-header h2{font-size:2.0125rem}
 }
 </style>
 </head>
