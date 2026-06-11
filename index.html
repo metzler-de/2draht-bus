@@ -629,10 +629,10 @@ ul{list-style:none}
   min-height:0;
   color:var(--white);
 }
-/* Hero height tracks the rendered hero image height at each breakpoint (image is 476×420) */
-@media(min-width:768px){.hero{min-height:calc(42.5rem * 420 / 476)}}   /* ~37.5rem = 600px */
-@media(min-width:1024px){.hero{min-height:calc(45rem * 420 / 476)}}    /* ~39.7rem = 635px */
-@media(min-width:1440px){.hero{min-height:calc(50rem * 420 / 476)}}    /* ~44.1rem = 706px */
+/* Hero tall enough to show the full device at each breakpoint */
+@media(min-width:768px){.hero{min-height:45rem}}                       /* 720px */
+@media(min-width:1024px){.hero{min-height:50rem}}                      /* 800px */
+@media(min-width:1440px){.hero{min-height:56.25rem}}                   /* 900px */
 .hero .label{color:rgba(255,255,255,0.7)}
 .hero-ambient1{
   position:absolute;inset:0;
