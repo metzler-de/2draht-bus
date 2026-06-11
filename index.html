@@ -1240,13 +1240,14 @@ ul{list-style:none}
    Design-system Product Card (brandbook /#product-cards spec)
 ─────────────────────────────────────────────────────────── */
 .ds-product-cards{
-  display:grid;grid-template-columns:1fr;gap:1.5rem;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;
   max-width:var(--content-max);margin:0 auto;
   /* Leave room below the card for its hover box-shadow (otherwise the next section clips it). */
   padding:0 var(--content-pad-x) 1.5rem;
   position:relative;z-index:2;
 }
 @media(min-width:768px){.ds-product-cards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:24rem){.ds-product-cards{grid-template-columns:1fr;gap:1rem}} /* tiny phones — one card per row */
 
 .ds-product-card{
   display:flex;flex-direction:column;gap:0.9375rem;   /* 15px */
