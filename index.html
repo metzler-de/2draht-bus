@@ -1146,7 +1146,7 @@ ul{list-style:none}
   margin:0 0 2.5rem;max-width:34rem;
 }
 .compat-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;
   margin:0;padding:0;
 }
 @media(min-width:768px){.compat-stats{gap:1rem}}
@@ -2532,35 +2532,26 @@ ul{list-style:none}
           <!-- Power cable: Verteiler → PSU36 (vertical, mint = clean DC), PSU36 → 230 V outlet (horizontal, yellow = AC mains) -->
           <path class="tp" d="M 130 292 L 130 336" stroke="#5CDBD3" stroke-width="1.6" fill="none"
                 stroke-linecap="round" stroke-dasharray="5 4"/>
-          <path class="tp" d="M 145 357 L 215 357" stroke="#FFC041" stroke-width="1.6" fill="none"
+          <path class="tp" d="M 143 353 L 215 353" stroke="#FFC041" stroke-width="1.6" fill="none"
                 stroke-linecap="round" stroke-dasharray="5 4"/>
 
-          <!-- XDM10-PSU36 power supply module — same dark-card style as other devices -->
+          <!-- XDM10-PSU36 power supply module — simple dark card with lightning glyph -->
           <g class="tn">
-            <!-- Top label "Stromversorgung" -->
-            <text x="129" y="332" fill="rgba(255,255,255,0.82)" font-size="9" text-anchor="middle">Stromversorgung</text>
-            <!-- Module body -->
-            <rect x="113" y="336" width="32" height="42" rx="5" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.4"/>
-            <!-- LED status row -->
-            <circle cx="120" cy="343" r="1.3" fill="#FFC041"/>
-            <circle cx="129" cy="343" r="1.3" fill="#5CDBD3"/>
-            <circle cx="138" cy="343" r="1.3" fill="rgba(92,219,211,0.3)"/>
-            <!-- Voltage rails (terminal blocks) -->
-            <rect x="118" y="350" width="22" height="3" rx="0.8" fill="rgba(92,219,211,0.2)" stroke="rgba(92,219,211,0.55)" stroke-width="0.5"/>
-            <rect x="118" y="356" width="22" height="3" rx="0.8" fill="rgba(92,219,211,0.2)" stroke="rgba(92,219,211,0.55)" stroke-width="0.5"/>
-            <rect x="118" y="362" width="22" height="3" rx="0.8" fill="rgba(92,219,211,0.2)" stroke="rgba(92,219,211,0.55)" stroke-width="0.5"/>
-            <!-- Small bottom badge: model number -->
-            <text x="129" y="374" fill="#5CDBD3" font-size="4.5" font-weight="700" text-anchor="middle" letter-spacing="0.5">PSU36</text>
-            <!-- Caption -->
-            <text x="129" y="389" fill="rgba(255,255,255,0.55)" font-size="7" text-anchor="middle">XDM10-PSU36 · 48 V</text>
+            <rect x="115" y="336" width="28" height="34" rx="4" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.4"/>
+            <!-- Lightning glyph centred inside -->
+            <path d="M 130 343 L 124 355 L 129 355 L 128 363 L 134 351 L 129 351 Z"
+                  fill="#5CDBD3" stroke="#5CDBD3" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- 2-line caption below -->
+            <text x="129" y="381" fill="rgba(255,255,255,0.82)" font-size="8" text-anchor="middle">XDM10-PSU36</text>
+            <text x="129" y="391" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">(Stromversorgung)</text>
           </g>
 
           <!-- 230 V wall outlet -->
           <g class="tn">
-            <rect x="215" y="343" width="40" height="28" rx="4" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
-            <path d="M 236 349 L 227 360 L 235 360 L 234 367 L 243 356 L 235 356 Z"
+            <rect x="215" y="339" width="40" height="28" rx="4" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
+            <path d="M 236 345 L 227 356 L 235 356 L 234 363 L 243 352 L 235 352 Z"
                   fill="#FFC041" stroke="#FFC041" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="270" y="361" fill="rgba(255,255,255,0.75)" font-size="9" text-anchor="start">230&nbsp;V&nbsp;AC</text>
+            <text x="270" y="357" fill="rgba(255,255,255,0.75)" font-size="9" text-anchor="start">230&nbsp;V&nbsp;AC</text>
           </g>
         </svg>
       </div>
@@ -2701,10 +2692,6 @@ ul{list-style:none}
       </p>
 
       <div class="compat-stats">
-        <div class="compat-stat">
-          <div class="compat-stat-val font-display">15+</div>
-          <div class="compat-stat-lbl">Hersteller&nbsp;abgedeckt<small>Audio-, Video- und Klingelsysteme der gängigen 2-Draht-Standards</small></div>
-        </div>
         <div class="compat-stat">
           <div class="compat-stat-val font-display">30 J.</div>
           <div class="compat-stat-lbl">Alt-Anlagen ersetzbar<small>Audio-, Video- und Klingelsysteme aus drei Jahrzehnten</small></div>
