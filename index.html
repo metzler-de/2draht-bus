@@ -700,7 +700,7 @@ ul{list-style:none}
 }
 @media(min-width:768px){
   .hero-product{
-    position:absolute;right:0;top:9.875rem;bottom:0;                 /* offset top by fixed header height (32+72+54=158px) */
+    position:absolute;right:var(--content-pad-x);top:9.875rem;bottom:0;   /* right edge aligns with header content edge */
     transform:none;
     width:55%;max-width:42.5rem;z-index:0;
     display:flex;align-items:center;justify-content:flex-end;        /* image vertically centred at all desktop widths */
