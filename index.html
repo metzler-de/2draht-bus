@@ -2529,29 +2529,24 @@ ul{list-style:none}
           <line x1="60"  y1="395" x2="340" y2="395" stroke="rgba(92,219,211,0.4)" stroke-width="1.5"/>
           <text x="74" y="337" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" letter-spacing="0.08em">1. UG</text>
 
-          <!-- Power cable: Verteiler → PSU36 (vertical, mint = clean DC), PSU36 → 230 V outlet (horizontal, yellow = AC mains) -->
-          <path class="tp" d="M 130 292 L 130 336" stroke="#5CDBD3" stroke-width="1.6" fill="none"
+          <!-- Power cable: Verteiler → PSU36 (vertical, orange = AC mains in) -->
+          <path class="tp" d="M 130 292 L 130 336" stroke="#FFC041" stroke-width="1.6" fill="none"
                 stroke-linecap="round" stroke-dasharray="5 4"/>
-          <path class="tp" d="M 143 353 L 215 353" stroke="#FFC041" stroke-width="1.6" fill="none"
+          <!-- 230 V AC mains tail right of the PSU -->
+          <path class="tp" d="M 143 353 L 165 353" stroke="#FFC041" stroke-width="1.6" fill="none"
                 stroke-linecap="round" stroke-dasharray="5 4"/>
 
-          <!-- XDM10-PSU36 power supply module — simple dark card with lightning glyph -->
+          <!-- XDM10-PSU36 power supply module — orange card with lightning glyph -->
           <g class="tn">
-            <rect x="115" y="336" width="28" height="34" rx="4" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.4"/>
+            <rect x="115" y="336" width="28" height="34" rx="4" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
             <!-- Lightning glyph centred inside -->
             <path d="M 130 343 L 124 355 L 129 355 L 128 363 L 134 351 L 129 351 Z"
-                  fill="#5CDBD3" stroke="#5CDBD3" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+                  fill="#FFC041" stroke="#FFC041" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
             <!-- 2-line caption below -->
             <text x="129" y="381" fill="rgba(255,255,255,0.82)" font-size="8" text-anchor="middle">XDM10-PSU36</text>
             <text x="129" y="391" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">(Stromversorgung)</text>
-          </g>
-
-          <!-- 230 V wall outlet -->
-          <g class="tn">
-            <rect x="215" y="339" width="40" height="28" rx="4" fill="#0e1a1c" stroke="#FFC041" stroke-width="1.4"/>
-            <path d="M 236 345 L 227 356 L 235 356 L 234 363 L 243 352 L 235 352 Z"
-                  fill="#FFC041" stroke="#FFC041" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="270" y="357" fill="rgba(255,255,255,0.75)" font-size="9" text-anchor="start">230&nbsp;V&nbsp;AC</text>
+            <!-- 230 V AC label, close to the PSU -->
+            <text x="170" y="357" fill="rgba(255,255,255,0.75)" font-size="9" text-anchor="start">230&nbsp;V&nbsp;AC</text>
           </g>
         </svg>
       </div>
