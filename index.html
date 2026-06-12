@@ -2529,19 +2529,30 @@ ul{list-style:none}
           <line x1="60"  y1="395" x2="340" y2="395" stroke="rgba(92,219,211,0.4)" stroke-width="1.5"/>
           <text x="74" y="337" fill="rgba(92,219,211,0.7)" font-size="11" font-weight="600" letter-spacing="0.08em">1. UG</text>
 
-          <!-- Power cable: Verteiler → PSU36 (vertical), PSU36 → 230 V outlet (horizontal) -->
-          <path class="tp" d="M 130 292 L 130 357" stroke="#FFC041" stroke-width="1.6" fill="none"
+          <!-- Power cable: Verteiler → PSU36 (vertical, mint = clean DC), PSU36 → 230 V outlet (horizontal, yellow = AC mains) -->
+          <path class="tp" d="M 130 292 L 130 336" stroke="#5CDBD3" stroke-width="1.6" fill="none"
                 stroke-linecap="round" stroke-dasharray="5 4"/>
-          <path class="tp" d="M 148 357 L 215 357" stroke="#FFC041" stroke-width="1.6" fill="none"
+          <path class="tp" d="M 145 357 L 215 357" stroke="#FFC041" stroke-width="1.6" fill="none"
                 stroke-linecap="round" stroke-dasharray="5 4"/>
 
-          <!-- XDM10-PSU36 power supply module (vertical, between Verteiler and outlet) -->
+          <!-- XDM10-PSU36 power supply module — same dark-card style as other devices -->
           <g class="tn">
-            <rect x="118" y="336" width="22" height="42" rx="2" fill="rgba(255,255,255,0.92)" stroke="#FFC041" stroke-width="1.2"/>
-            <rect x="122" y="342" width="14" height="6" rx="1" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="0.7"/>
-            <rect x="122" y="352" width="14" height="6" rx="1" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="0.7"/>
-            <rect x="122" y="362" width="14" height="6" rx="1" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="0.7"/>
-            <text x="129" y="390" fill="rgba(255,255,255,0.75)" font-size="8" text-anchor="middle">XDM10-PSU36</text>
+            <!-- Top label "Stromversorgung" -->
+            <text x="129" y="332" fill="rgba(255,255,255,0.82)" font-size="9" text-anchor="middle">Stromversorgung</text>
+            <!-- Module body -->
+            <rect x="113" y="336" width="32" height="42" rx="5" fill="#0e1a1c" stroke="#5CDBD3" stroke-width="1.4"/>
+            <!-- LED status row -->
+            <circle cx="120" cy="343" r="1.3" fill="#FFC041"/>
+            <circle cx="129" cy="343" r="1.3" fill="#5CDBD3"/>
+            <circle cx="138" cy="343" r="1.3" fill="rgba(92,219,211,0.3)"/>
+            <!-- Voltage rails (terminal blocks) -->
+            <rect x="118" y="350" width="22" height="3" rx="0.8" fill="rgba(92,219,211,0.2)" stroke="rgba(92,219,211,0.55)" stroke-width="0.5"/>
+            <rect x="118" y="356" width="22" height="3" rx="0.8" fill="rgba(92,219,211,0.2)" stroke="rgba(92,219,211,0.55)" stroke-width="0.5"/>
+            <rect x="118" y="362" width="22" height="3" rx="0.8" fill="rgba(92,219,211,0.2)" stroke="rgba(92,219,211,0.55)" stroke-width="0.5"/>
+            <!-- Small bottom badge: model number -->
+            <text x="129" y="374" fill="#5CDBD3" font-size="4.5" font-weight="700" text-anchor="middle" letter-spacing="0.5">PSU36</text>
+            <!-- Caption -->
+            <text x="129" y="389" fill="rgba(255,255,255,0.55)" font-size="7" text-anchor="middle">XDM10-PSU36 · 48 V</text>
           </g>
 
           <!-- 230 V wall outlet -->
