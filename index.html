@@ -1641,12 +1641,12 @@ ul{list-style:none}
   width:2rem;height:2rem;flex-shrink:0;
   color:var(--teal);
   border:0.0625rem solid var(--teal);border-radius:50%;
-  font-size:1.125rem;font-weight:300;line-height:1;
   transition:transform .35s cubic-bezier(.22,1,.36,1), background 0.2s, color 0.2s;
 }
+.faq-btn .faq-icon svg{width:0.9375rem;height:0.9375rem}
 .faq-item.is-open .faq-btn .faq-icon,
 .faq-btn .faq-icon.open{
-  transform:rotate(45deg);
+  transform:rotate(180deg);
   background:var(--teal);color:var(--white);
 }
 .faq-answer{
@@ -3621,7 +3621,9 @@ ul{list-style:none}
           '<span class="faq-num">'+String(i+1).padStart(2,'0')+'</span>'+
           '<span class="font-display faq-q">'+f[0]+'</span>'+
         '</div>'+
-        '<span class="faq-icon'+(i===0?' open':'')+'" aria-hidden="true">+</span>'+
+        '<span class="faq-icon'+(i===0?' open':'')+'" aria-hidden="true">'+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'+
+        '</span>'+
       '</button>'+
       '<div class="faq-answer'+(i===0?' open':'')+'" style="'+(i===0?'max-height:18.75rem':'')+'">'+
         '<p>'+f[1]+'</p>'+
