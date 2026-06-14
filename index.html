@@ -1640,14 +1640,14 @@ ul{list-style:none}
   display:inline-flex;align-items:center;justify-content:center;
   width:2rem;height:2rem;flex-shrink:0;
   color:var(--teal);
-  border:0.0625rem solid var(--teal);border-radius:0.25rem;
-  transition:transform .35s cubic-bezier(.22,1,.36,1), background 0.2s, color 0.2s;
+  background:none;border:none;border-radius:0;
+  transition:transform .35s cubic-bezier(.22,1,.36,1), color 0.2s;
 }
-.faq-btn .faq-icon svg{width:0.9375rem;height:0.9375rem}
+.faq-btn .faq-icon svg{width:1.5rem;height:1.5rem;stroke-width:2.25}
 .faq-item.is-open .faq-btn .faq-icon,
 .faq-btn .faq-icon.open{
   transform:rotate(180deg);
-  background:var(--teal);color:var(--white);
+  background:none;color:var(--teal);
 }
 .faq-answer{
   overflow:hidden;max-height:0;opacity:0;
