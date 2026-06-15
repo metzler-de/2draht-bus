@@ -2045,16 +2045,16 @@ ul{list-style:none}
 @media(max-width:767px){
   .hero-grid{display:flex;flex-direction:column}
   .hero-center{display:contents}
-  .hero-center h1{order:1}
+  .hero-center h1{order:1;margin-top:2rem}            /* push heading down */
   .hero-center .hero-badges{
-    order:2;margin-top:1.25rem;
+    order:2;margin-top:0.875rem;             /* 30% smaller gap (was 1.25rem) */
     flex-wrap:nowrap;gap:0.5rem;             /* keep both badges on one row */
   }
   .hero-center .hero-badge{
     padding:0.375rem 0.625rem;font-size:0.6875rem;letter-spacing:0.04em;
     white-space:nowrap;flex-shrink:1;min-width:0;
   }
-  .hero-center .hero-desc{order:3;margin-top:1.5rem}
+  .hero-center .hero-desc{order:3;margin-top:1.05rem} /* 30% smaller gap (was 1.5rem) */
   .hero-product{order:4;max-width:100%;width:100%;margin:2rem auto 0;z-index:1;
                 position:static;transform:none !important}
   .hero-actions{order:5;margin-top:1.5rem;z-index:2;flex-direction:column;width:100%}
