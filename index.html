@@ -3851,26 +3851,7 @@ ul{list-style:none}
     });
   });
 
-  // ─── XDM10 photo · scroll-parallax inside the modernize section ───
-  var modernizeSection = document.querySelector('.modernize');
-  var modernizePhoto   = document.getElementById('modernizePhoto');
-  function onModernizePhotoScroll(){
-    if(!modernizeSection || !modernizePhoto) return;
-    var rect = modernizeSection.getBoundingClientRect();
-    var vh   = window.innerHeight;
-    var sH   = modernizeSection.offsetHeight;
-    // Progress 0 → 1 across the section's full traversal of the viewport
-    var progress = (vh - rect.top) / (vh + sH);
-    progress = Math.max(0, Math.min(1, progress));
-    // Translate: from +60px (section entering) down to -60px (section leaving) — gentle parallax
-    var y     = (0.5 - progress) * 120;
-    var scale = 1 + progress * 0.04;
-    modernizePhoto.style.transform = 'translateY(' + y + 'px) scale(' + scale.toFixed(3) + ')';
-  }
-  if(window.matchMedia('(min-width:768px)').matches){
-    window.addEventListener('scroll', onModernizePhotoScroll, {passive:true});
-    onModernizePhotoScroll();
-  }
+  // ─── XDM10 modernize photo — scroll parallax disabled ───
 
   // ─── Smooth anchor scrolling ───
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
