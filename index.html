@@ -1568,12 +1568,11 @@ ul{list-style:none}
   position:relative;padding:0 0 5rem;
   background:var(--white);
 }
-.faq-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
-@media(min-width:1024px){
-  .faq-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:3.75rem;align-items:start}
+.faq-inner{
+  max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x);
+  display:flex;flex-direction:column;align-items:center;
 }
-.faq-header{margin-bottom:2.5rem}
-@media(min-width:1024px){.faq-header{margin-bottom:0;position:sticky;top:10.625rem}}
+.faq-header{margin-bottom:2.5rem;text-align:center}
 .faq-label{
   font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
   color:var(--teal);margin-bottom:1.25rem;
@@ -1584,6 +1583,7 @@ ul{list-style:none}
   font-size:2.875rem;line-height:1.15;
   letter-spacing:-0.04em;color:var(--g-900);
 }
+.faq-list{width:100%;max-width:54rem}
 .faq-header h2 .topo-accent{
   background:none;-webkit-text-fill-color:currentColor;color:var(--g-900);
 }
@@ -1620,17 +1620,7 @@ ul{list-style:none}
   font-family:inherit;gap:1rem;
 }
 .faq-btn .faq-left{display:flex;align-items:center;gap:1.25rem;min-width:0}
-.faq-btn .faq-num{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:2.25rem;height:2.25rem;flex-shrink:0;
-  font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;
-  color:var(--teal);
-  background:var(--teal-75);border-radius:0.25rem;
-  transition:background 0.2s ease, color 0.2s ease;
-}
-.faq-item.is-open .faq-btn .faq-num{
-  background:var(--teal);color:var(--white);
-}
+.faq-btn .faq-num{display:none}                                    /* numbers hidden — cleaner centred layout */
 .faq-btn .faq-q{
   font-size:clamp(1rem,2.2vw,1.25rem);
   letter-spacing:-0.02em;font-weight:600;
@@ -1655,12 +1645,9 @@ ul{list-style:none}
 }
 .faq-answer.open{opacity:1}
 .faq-answer p{
-  padding:0 1.5rem 1.75rem 4.75rem;                     /* aligns under the question text, not the number circle */
+  padding:0 1.5rem 1.75rem 1.5rem;
   max-width:42rem;color:var(--g-700);line-height:1.7;
   font-size:1rem;margin:0;
-}
-@media(max-width:47.99rem){
-  .faq-answer p{padding-left:1.5rem}
 }
 
 /* ──────────────────────────────────────────────────────────
