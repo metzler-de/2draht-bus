@@ -1006,13 +1006,19 @@ ul{list-style:none}
   font-weight:700;color:var(--teal);
 }
 .upgrade-step-icon{
-  width:2.5rem;height:2.5rem;
-  background:var(--teal-75);
-  border-radius:0.5rem;
-  display:flex;align-items:center;justify-content:center;
+  width:2.25rem;height:2.25rem;
+  background:var(--paper);
   color:var(--teal);
+  border-radius:0.5rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background 0.22s ease, color 0.22s ease, transform 0.22s ease;
 }
 .upgrade-step-icon svg{width:1.125rem;height:1.125rem;stroke-width:1.8}
+@media(hover:hover){
+  .upgrade-step:hover .upgrade-step-icon{
+    background:var(--teal);color:var(--white);transform:translateY(-0.0625rem);
+  }
+}
 .upgrade-step h3{
   font-size:clamp(1.5rem,3vw,2rem);
   letter-spacing:-0.04em;line-height:1.1;
@@ -2054,7 +2060,7 @@ ul{list-style:none}
   .upgrade-step h3{font-size:1.25rem}
   .upgrade-step p{font-size:1rem;line-height:1.6}
   .upgrade-step-num{font-size:2rem}
-  .upgrade-step-icon{width:2.25rem;height:2.25rem;border-radius:0.5rem}
+  .upgrade-step-icon{width:2rem;height:2rem;border-radius:0.5rem}
   .upgrade-step-icon svg{width:1rem;height:1rem}
   .upgrade-steps{border-left:none;border-right:none}
   .upgrade-step{border-right:none;border-bottom:0.0625rem solid rgba(0,0,0,0.12)}
