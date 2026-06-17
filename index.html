@@ -1439,124 +1439,92 @@ ul{list-style:none}
    FAQ
 ─────────────────────────────────────────────────────────── */
 /* ──────────────────────────────────────────────────────────
-   TECH SPECS — icon-card grid
+   TECH SPECS — "Neue Features"-style 9-card grid (design system)
 ─────────────────────────────────────────────────────────── */
 .specs{
   position:relative;padding:4rem 0;
   background:var(--white);
 }
 .specs-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
-.specs-header{
-  max-width:42rem;margin:0 auto 2.5rem;text-align:center;
-}
-.specs-eyebrow{
-  font-size:0.875rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:1rem;
-}
-.specs-header h2{
-  font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.15;
-  letter-spacing:-0.04em;color:var(--g-900);
-}
-.specs-header p{
-  margin-top:1rem;
-  font-size:0.9375rem;color:var(--g-700);line-height:1.6;
-}
-/* Bento-style spec mosaic — featured cards span 2 cells with larger display values */
-.specs-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-auto-flow:dense;
-  gap:1rem;
-}
-@media(max-width:75rem){.specs-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:56.25rem){.specs-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:32.5rem){.specs-grid{grid-template-columns:1fr}}
-.spec-card{
-  position:relative;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  min-height:10.5rem;
-  padding:1.5rem 1.5rem 1.5rem 1.5rem;
-  background:linear-gradient(145deg, var(--white) 0%, var(--paper) 100%);
-  border:0.0625rem solid var(--g-200);
-  border-radius:0.5rem;
-  overflow:hidden;
-  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-.spec-card.is-featured{grid-column:span 2}
-@media(max-width:56.25rem){.spec-card.is-featured{grid-column:span 2}}
-@media(max-width:32.5rem){.spec-card.is-featured{grid-column:span 1}}
 
-/* Radial accent glow tucked into the top-right corner */
-.spec-card::before{
-  content:"";
-  position:absolute;top:-25%;right:-15%;
-  width:55%;height:75%;
-  background:radial-gradient(circle, var(--teal-75) 0%, transparent 65%);
-  opacity:0.55;transition:opacity 0.3s ease;
-  pointer-events:none;
+/* Pill badge + heading row above the grid */
+.nf-intro-row{
+  display:flex;flex-direction:column;align-items:center;
+  margin-bottom:1.75rem;gap:0.625rem;
+}
+.nf-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.3125rem 0.75rem 0.3125rem 0.625rem;
+  background:var(--teal-75);color:var(--teal);
+  border-radius:var(--radius-pill);
+  font-size:0.625rem;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;
+}
+.nf-badge::before{
+  content:"";width:0.375rem;height:0.375rem;
+  border-radius:50%;background:var(--teal);display:inline-block;
+}
+.nf-title{
+  font-family:var(--font);font-weight:700;
+  font-size:2.875rem;line-height:1.1;letter-spacing:-0.01em;
+  color:var(--black);text-align:center;margin:0;
+}
+.nf-title .nf-accent{color:var(--teal)}
+
+/* 3-col card grid with 1px gutters that read as dividers */
+.nf-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0.0625rem;background:var(--g-200);
+  border:0.0625rem solid var(--g-200);
+  border-radius:0.5rem;overflow:hidden;
+}
+@media(max-width:56.25rem){.nf-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:35rem){.nf-grid{grid-template-columns:1fr}}
+
+.nf-card{
+  background:var(--white);padding:1.5rem;
+  display:flex;flex-direction:column;align-items:flex-start;
+  gap:0.375rem;
+  transition:background 220ms ease;
+}
+@media(hover:hover){.nf-card:hover{background:var(--teal-75)}}
+
+.nf-card-num{
+  font-size:0.6875rem;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--g-500);
+  transition:color 220ms ease;
+}
+@media(hover:hover){.nf-card:hover .nf-card-num{color:var(--teal)}}
+
+.nf-card-icon{
+  width:2.25rem;height:2.25rem;border-radius:0.5rem;
+  background:var(--paper);color:var(--teal);
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+.nf-card-icon svg{
+  width:1.125rem;height:1.125rem;fill:none;
+  stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
 }
 @media(hover:hover){
-  .spec-card:hover{
-    transform:translateY(-0.25rem);
-    border-color:var(--teal);
-    box-shadow:0 0.625rem 1.5rem rgba(1,82,83,0.12);
-  }
-  .spec-card:hover::before{opacity:1}
-  .spec-card:hover .spec-icon{
+  .nf-card:hover .nf-card-icon{
     background:var(--teal);color:var(--white);
-    border-color:var(--teal);
-    transform:rotate(-8deg) scale(1.05);
+    transform:translateY(-0.0625rem);
   }
 }
 
-.spec-icon{
-  position:absolute;top:1.25rem;right:1.25rem;
-  width:2.5rem;height:2.5rem;
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--white);
-  color:var(--teal);
-  border:0.0625rem solid var(--teal-75);
-  border-radius:0.625rem;
-  transition:background 0.25s ease, color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-  z-index:1;
+.nf-card-title{
+  font-size:1rem;font-weight:700;line-height:1.3;
+  color:var(--black);margin:0;
+  transition:color 220ms ease;
 }
-.spec-icon svg{width:1.25rem;height:1.25rem;stroke-width:1.8}
-.spec-content{position:relative;z-index:1;display:block;min-width:0;width:100%}
-.spec-label{
-  font-size:0.6875rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:0.625rem;
-}
-.spec-value{
-  font-family:var(--font);font-weight:700;
-  font-size:1.25rem;line-height:1.15;letter-spacing:-0.02em;
-  color:var(--g-900);
-}
-.is-featured .spec-value{
-  font-size:1.75rem;letter-spacing:-0.03em;
-}
-/* At mobile/tablet widths, drop the featured-card emphasis so all values share one size */
-@media(max-width:56.25rem){
-  .is-featured .spec-value{
-    font-size:1.25rem;letter-spacing:-0.02em;
-  }
-}
-.spec-value small{
-  display:block;
-  font-size:0.8125rem;font-weight:400;
-  color:var(--g-600);line-height:1.55;
-  margin-top:0.625rem;
-  letter-spacing:0;
-}
+@media(hover:hover){.nf-card:hover .nf-card-title{color:var(--teal)}}
 
-/* Combo card — split into two halves with a divider (Maße | Gewicht) */
-.spec-content--split{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  gap:1.25rem;
-  align-items:start;
+.nf-card-desc{
+  font-size:1rem;line-height:1.4;color:var(--g-600);margin:0;
 }
-.spec-combo-half{min-width:0}
 .spec-combo-divider{
   width:0.0625rem;align-self:stretch;
   background:var(--g-200);
@@ -2601,109 +2569,107 @@ ul{list-style:none}
   </div>
 </section>
 
-<!-- ─── TECH SPECS — moved above "Alt raus XDM10 rein" ─── -->
+<!-- ─── TECH SPECS — 9-feature grid in design-system style ─── -->
 <section id="specs" class="specs" aria-label="Technische Daten">
   <div class="specs-inner">
-    <div class="specs-header">
-      <div class="specs-eyebrow">Technische Daten</div>
-      <h2 class="font-display">Spezifikationen</h2>
-      <p>Alle Werte gelten für die Metzler XDM10 Türstation (Maxior-Variante).</p>
+
+    <!-- Badge + heading -->
+    <div class="nf-intro-row">
+      <span class="nf-badge">Datenblatt</span>
+      <h2 class="nf-title font-display">Technische <span class="nf-accent">Daten</span></h2>
     </div>
-    <div class="specs-grid">
 
-      <!-- Kamera (featured — 2-col) -->
-      <div class="spec-card is-featured">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+    <!-- 3×3 spec grid -->
+    <div class="nf-grid">
+
+      <!-- 01 · Kamera -->
+      <div class="nf-card">
+        <span class="nf-card-num">Kamera</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">Kamera</div>
-          <div class="spec-value">3&nbsp;MP Kamera mit WDR<small>Sichtfeld 133° × 82° · Videokompression H.264 · IR-Zusatzlicht</small></div>
-        </div>
+        <h3 class="nf-card-title">3&nbsp;MP Kamera mit WDR</h3>
+        <p class="nf-card-desc">Sichtfeld 133° × 82° · Videokompression H.264 · IR-Zusatzlicht.</p>
       </div>
 
-      <!-- Nachtsicht -->
-      <div class="spec-card">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      <!-- 02 · Nachtsicht -->
+      <div class="nf-card">
+        <span class="nf-card-num">Nachtsicht</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">Nachtsicht</div>
-          <div class="spec-value">IR-Zusatzlicht<small>Aktivierung bei geringer Beleuchtung · WDR unterstützt</small></div>
-        </div>
+        <h3 class="nf-card-title">IR-Zusatzlicht</h3>
+        <p class="nf-card-desc">Aktivierung bei geringer Beleuchtung · WDR unterstützt.</p>
       </div>
 
-      <!-- Schutzklasse -->
-      <div class="spec-card">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <!-- 03 · Schutzklasse -->
+      <div class="nf-card">
+        <span class="nf-card-num">Schutzklasse</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">Schutzklasse</div>
-          <div class="spec-value">IP65 · IK10<small>Außenbereich · Betriebstemperatur −40 °C bis +60 °C</small></div>
-        </div>
+        <h3 class="nf-card-title">IP65 · IK10</h3>
+        <p class="nf-card-desc">Außenbereich · Betriebstemperatur −40 °C bis +60 °C.</p>
       </div>
 
-      <!-- Verkabelung -->
-      <div class="spec-card">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v9a4 4 0 0 0 8 0V10"/><path d="M3 5h2"/><path d="M3 9h2"/><path d="M15 19h2"/><path d="M19 19h2"/><circle cx="16" cy="6" r="2"/><path d="M14.5 7.5h3"/></svg>
+      <!-- 04 · Verkabelung -->
+      <div class="nf-card">
+        <span class="nf-card-num">Verkabelung</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 9V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v9a4 4 0 0 0 8 0V10"/><path d="M3 5h2"/><path d="M3 9h2"/><path d="M15 19h2"/><path d="M19 19h2"/><circle cx="16" cy="6" r="2"/><path d="M14.5 7.5h3"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">Verkabelung</div>
-          <div class="spec-value">2-Draht-BUS<small>10/100 Mbps selbstanpassend · bestehende 2-adrige Leitung weiterverwendbar</small></div>
-        </div>
+        <h3 class="nf-card-title">2-Draht-BUS</h3>
+        <p class="nf-card-desc">10/100 Mbps selbstanpassend · bestehende 2-adrige Leitung weiterverwendbar.</p>
       </div>
 
-      <!-- Stromversorgung -->
-      <div class="spec-card">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <!-- 05 · Stromversorgung -->
+      <div class="nf-card">
+        <span class="nf-card-num">Stromversorgung</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">Stromversorgung</div>
-          <div class="spec-value">48&nbsp;V über XDM10-VT4 · alternativ 12&nbsp;V&nbsp;DC<small>Stromverbrauch ≤&nbsp;6&nbsp;W · Türsteuerung Relaisausgang 30&nbsp;V&nbsp;DC / 1&nbsp;A</small></div>
-        </div>
+        <h3 class="nf-card-title">48&nbsp;V über XDM10-VT4 · alternativ 12&nbsp;V&nbsp;DC</h3>
+        <p class="nf-card-desc">Stromverbrauch ≤&nbsp;6&nbsp;W · Türsteuerung Relaisausgang 30&nbsp;V&nbsp;DC / 1&nbsp;A.</p>
       </div>
 
-      <!-- App-Steuerung (featured — 2-col) -->
-      <div class="spec-card is-featured">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+      <!-- 06 · App-Steuerung -->
+      <div class="nf-card">
+        <span class="nf-card-num">App-Steuerung</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">App-Steuerung</div>
-          <div class="spec-value">Hik-Connect (Android &amp; iOS)<small>Audio G.711 mit Geräusch- und Echounterdrückung · 99 Innenstationen verknüpfbar</small></div>
-        </div>
+        <h3 class="nf-card-title">Hik-Connect (Android &amp; iOS)</h3>
+        <p class="nf-card-desc">Audio G.711 mit Geräusch- und Echounterdrückung · 99 Innenstationen verknüpfbar.</p>
       </div>
 
-      <!-- Material (featured — 2-col) -->
-      <div class="spec-card is-featured">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 22V12"/></svg>
+      <!-- 07 · Material -->
+      <div class="nf-card">
+        <span class="nf-card-num">Material</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 22V12"/></svg>
         </span>
-        <div class="spec-content">
-          <div class="spec-label">Material</div>
-          <div class="spec-value">Edelstahlgehäuse mit IK10-Glasfront<small>Farben: Anthrazit · Schwarz · Grau · Eisenglimmer · Weiß · Wunschfarbe</small></div>
-        </div>
+        <h3 class="nf-card-title">Edelstahlgehäuse mit IK10-Glasfront</h3>
+        <p class="nf-card-desc">Farben: Anthrazit · Schwarz · Grau · Eisenglimmer · Weiß · Wunschfarbe.</p>
       </div>
 
-      <!-- Maße + Gewicht (featured — combined card) -->
-      <div class="spec-card is-featured spec-card--combo">
-        <span class="spec-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0L2.7 16.7a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg>
+      <!-- 08 · Maße -->
+      <div class="nf-card">
+        <span class="nf-card-num">Maße (B × H × T)</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0L2.7 16.7a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg>
         </span>
-        <div class="spec-content spec-content--split">
-          <div class="spec-combo-half">
-            <div class="spec-label">Maße (B × H × T)</div>
-            <div class="spec-value">13,50 × 29,30 × 4,40&nbsp;cm</div>
-          </div>
-          <div class="spec-combo-divider" aria-hidden="true"></div>
-          <div class="spec-combo-half">
-            <div class="spec-label">Gewicht</div>
-            <div class="spec-value">1,59&nbsp;kg<small>Versandgewicht: 2,10&nbsp;kg</small></div>
-          </div>
-        </div>
+        <h3 class="nf-card-title">13,50 × 29,30 × 4,40&nbsp;cm</h3>
+        <p class="nf-card-desc">Kompakte Aufputz-Türstation für Einbau direkt an der Hauswand.</p>
+      </div>
+
+      <!-- 09 · Gewicht -->
+      <div class="nf-card">
+        <span class="nf-card-num">Gewicht</span>
+        <span class="nf-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12l3 6c0 2.2-2.7 4-6 4H9c-3.3 0-6-1.8-6-4l3-6Z"/><path d="M12 13v8"/><path d="M8 21h8"/></svg>
+        </span>
+        <h3 class="nf-card-title">1,59&nbsp;kg</h3>
+        <p class="nf-card-desc">Versandgewicht: 2,10&nbsp;kg.</p>
       </div>
 
     </div>
