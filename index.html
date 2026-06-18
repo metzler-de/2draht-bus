@@ -282,11 +282,11 @@ ul{list-style:none}
 .font-display{font-family:var(--font);letter-spacing:-0.04em;font-weight:700}
 .label{
   font-family:var(--font);
-  font-size:0.6875rem;       /* 11px */
-  letter-spacing:0.2em;
+  font-size:0.75rem;
+  letter-spacing:0.18em;
   text-transform:uppercase;
-  font-weight:500;
-  color:var(--g-600);
+  font-weight:700;
+  color:var(--g-800);
 }
 .text-stroke{
   -webkit-text-stroke:0.0625rem currentColor;
@@ -826,25 +826,25 @@ ul{list-style:none}
    TOPOLOGY (dark)
 ─────────────────────────────────────────────────────────── */
 .topo-section{
-  position:relative;padding:5rem 0;overflow:hidden;
+  position:relative;padding:6.25rem 0;overflow:hidden;
   background:var(--teal-900);
   color:var(--white);
 }
 .topo-header{
-  text-align:center;margin-bottom:4rem;
+  text-align:center;margin-bottom:2.75rem;
   max-width:var(--content-max);margin-left:auto;margin-right:auto;
   padding:0 var(--content-pad-x);
 }
 .topo-eyebrow-top{
   display:inline-block;
-  font-size:0.875rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--mint);margin-bottom:1.5rem;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--mint);margin-bottom:0.875rem;
 }
 .topo-title{
   /* Display 4 */
   font-family:var(--font);font-weight:700;
-  font-size:3.5rem;line-height:1.0;
-  letter-spacing:-0.04em;color:var(--white);
+  font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;
+  letter-spacing:-0.03em;color:var(--white);
   margin-bottom:1.5rem;
 }
 .topo-title .topo-accent{
@@ -874,22 +874,22 @@ ul{list-style:none}
   .topo-stage{grid-template-columns:1fr 1fr;gap:5rem;min-height:31.25rem}
 }
 .topo-eyebrow{
-  font-size:0.875rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--white);margin-bottom:1.25rem;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--white);margin-bottom:0.875rem;
 }
 .topo-headline{
   font: 700 var(--display-3);
   letter-spacing:-0.03em;line-height:1;
-  margin-bottom:2rem;
+  margin-bottom:1.25rem;
 }
 .topo-hl-accent{
   color:var(--mint);                                                /* solid mint — matches eyebrow */
   margin:0 0.25em;
 }
 .topo-body{
-  font-size:1rem;line-height:1.7;
+  font-size:1rem;line-height:1.6;
   color:rgba(255,255,255,0.85);
-  margin-bottom:2.5rem;
+  margin-bottom:1.75rem;
 }
 /* Feature-tile stats — 3 compact cards side by side */
 .topo-stats{
@@ -927,8 +927,8 @@ ul{list-style:none}
 .topo-stat-lbl small{
   display:block;
   margin-top:0.25rem;
-  font-size:0.875rem;font-weight:400;
-  color:rgba(255,255,255,0.55);
+  font-size:1rem;font-weight:400;
+  color:var(--g-400);
   line-height:1.5;
 }
 @media(max-width:480px){
@@ -1018,6 +1018,48 @@ ul{list-style:none}
   font-size:1rem;color:var(--g-800);line-height:1.55;margin:0;
 }
 
+/* ── Process steps — production-style variant (big number + icon tile + rule) ── */
+.upg{position:relative;padding:6.25rem 0;background:var(--white);color:var(--g-900)}
+.upg-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+.upg-head{max-width:48rem;margin:0 auto 2.5rem;text-align:center}
+@media(min-width:768px){.upg-head{margin-bottom:3rem}}
+.upg-label{
+  display:block;font-family:var(--font);font-size:0.75rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);
+  margin-bottom:1rem;
+}
+.upg-head h2{
+  font-family:var(--font);font-weight:700;margin:0;
+  font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--g-900);
+}
+.upg-head p{margin:1.1rem auto 0;max-width:60ch;font-size:1.0625rem;line-height:1.6;color:var(--g-800)}
+.upg-steps{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:768px){.upg-steps{grid-template-columns:repeat(3,1fr)}}
+.upg-step{
+  background:transparent;padding:2.5rem 1.5rem;
+  display:flex;flex-direction:column;gap:1.5rem;
+  border-right:0.0625rem solid rgba(0,0,0,0.12);transition:background .3s;
+}
+@media(min-width:768px){.upg-step{padding:3rem 2rem;min-height:22rem}}
+.upg-step:last-child{border-right:none}
+@media(hover:hover){.upg-step:hover{background:rgba(1,82,83,0.05)}}
+@media(max-width:767px){
+  .upg-step{border-right:none;border-bottom:0.0625rem solid rgba(0,0,0,0.12);padding:1.5rem 0;gap:0.75rem}
+  .upg-step:last-child{border-bottom:none}
+}
+.upg-step-num{font-size:4rem;letter-spacing:-0.04em;line-height:1;font-weight:700;color:var(--teal)}
+@media(max-width:767px){.upg-step-num{font-size:2rem}}
+.upg-step-icon{
+  width:2.5rem;height:2.5rem;border-radius:0.625rem;
+  background:rgba(1,82,83,0.08);color:var(--teal);
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.upg-step-icon svg{width:1.375rem;height:1.375rem;stroke-width:1.8}
+.upg-step h3{font-family:var(--font);font-size:1.25rem;font-weight:700;line-height:1.35;color:var(--g-900);margin:0}
+.upg-step .line{height:0.0625rem;width:3rem;background:var(--teal);transition:width .7s}
+@media(hover:hover){.upg-step:hover .line{width:100%}}
+.upg-step p{font-size:1rem;color:var(--g-800);line-height:1.6;margin:0}
+
 .upgrade-benefits{
   max-width:var(--content-max);
   margin:5rem auto 0;
@@ -1036,7 +1078,7 @@ ul{list-style:none}
 }
 /* Products section eyebrow — same size/weight as the others */
 .products-eyebrow{
-  font-size:0.875rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
   color:var(--teal);margin-bottom:1rem;
 }
 .upgrade-benefits h3{
@@ -1081,14 +1123,14 @@ ul{list-style:none}
   color:var(--g-900);
 }
 .benefit-item-desc{
-  font-size:0.8125rem;color:var(--g-700);line-height:1.45;
+  font-size:0.8125rem;color:var(--g-800);line-height:1.45;
 }
 
 /* ──────────────────────────────────────────────────────────
    MODERNIZE / COMPATIBLE SYSTEMS (dark)
 ─────────────────────────────────────────────────────────── */
 .modernize{
-  position:relative;padding:4rem 0;
+  position:relative;padding:6rem 0;
   background:var(--gradient-brand);
   color:var(--white);
   /* NOTE: do NOT set overflow:hidden here — it breaks position:sticky on .modernize-left */
@@ -1123,8 +1165,8 @@ ul{list-style:none}
 .modernize-left h2{
   /* Display 4 */
   font-family:var(--font);font-weight:700;
-  font-size:3.5rem;line-height:1.0;
-  letter-spacing:-0.04em;color:var(--white);margin-top:1rem;
+  font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;
+  letter-spacing:-0.03em;color:var(--white);margin-top:1rem;
 }
 .modernize-left h2 .topo-accent{
   background:none;-webkit-text-fill-color:currentColor;color:var(--white);
@@ -1145,10 +1187,11 @@ ul{list-style:none}
 }
 .compat-sub{
   font-family:var(--font);font-size:1rem;
-  color:rgba(255,255,255,0.7);line-height:1.5;
+  color:var(--g-400);line-height:1.5;
   margin:0 0 2.5rem;max-width:34rem;
 }
-.compat-sub strong{color:var(--mint);font-weight:700}
+.compat-sub strong{color:inherit;font-weight:inherit}
+.modernize .topo-eyebrow{color:var(--g-400)}
 .compat-stats{
   display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;
   margin:0;padding:0;
@@ -1162,19 +1205,79 @@ ul{list-style:none}
   border-radius:var(--radius-lg);
 }
 .compat-stat-val{
-  font-size:clamp(1.5rem, 2vw, 2.25rem);
-  font-weight:700;letter-spacing:-0.04em;line-height:1;
-  color:var(--mint);
-  margin-bottom:0.5rem;
+  display:inline;color:var(--mint);letter-spacing:normal;
 }
 .compat-stat-lbl{
-  font-size:0.875rem;font-weight:600;color:var(--white);line-height:1.3;
+  font-size:clamp(1.5rem, 2vw, 2.25rem);font-weight:700;letter-spacing:normal;
+  color:var(--mint);line-height:1.3;
 }
 .compat-stat-lbl small{
-  display:block;margin-top:0.375rem;
-  font-size:0.75rem;font-weight:400;
-  color:rgba(255,255,255,0.6);line-height:1.5;
+  display:block;margin-top:1rem;
+  font-size:1rem;font-weight:400;
+  color:var(--g-400);line-height:1.5;
 }
+
+/* ════ COMPAT SECTION — 3 design variants (choose one, rest will be removed) ════ */
+.cv-tag{
+  display:inline-block;font-family:var(--font);font-size:0.6875rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;padding:0.25rem 0.625rem;
+  border-radius:var(--radius-pill);margin-bottom:1.5rem;
+}
+/* ── Variant 1 · bright, centered editorial ── */
+.cva{background:var(--paper);padding:6.25rem 0;color:var(--g-900)}
+.cva-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+.cva .cv-tag{background:var(--teal-50);color:var(--teal)}
+.cva-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:768px){.cva-grid{grid-template-columns:1fr 1fr;gap:3.5rem}}
+.cva-eyebrow{font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.875rem}
+.cva-title{font-family:var(--font);font-weight:700;font-size:clamp(1.75rem,3.2vw,2.5rem);line-height:1.1;letter-spacing:-0.03em;color:var(--g-900);margin:0 0 1rem}
+.cva-title .cva-accent{color:var(--teal)}
+.cva-lede{font-size:1.125rem;line-height:1.5;font-weight:600;color:var(--g-900);margin:0 0 0.625rem;max-width:34rem}
+.cva-sub{font-size:0.9375rem;line-height:1.55;color:var(--g-700);margin:0 0 1.75rem;max-width:32rem}
+.cva-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.875rem}
+@media(max-width:30rem){.cva-stats{grid-template-columns:1fr}}
+.cva-stat{background:var(--white);border:0.0625rem solid var(--g-200);border-radius:0.5rem;padding:1.25rem}
+.cva-stat-head{font-family:var(--font);font-weight:700;font-size:1.125rem;line-height:1.3;color:var(--g-900)}
+.cva-stat-head span{color:var(--teal)}
+.cva-stat p{margin:0.5rem 0 0;font-size:0.9375rem;line-height:1.5;color:var(--g-700)}
+.cva-media{width:100%;border-radius:0.5rem;display:block;aspect-ratio:4/3;max-height:30rem;object-fit:cover}
+
+/* ── Variant 2 · dark, mirrored columns ── */
+.cvb{background:var(--gradient-brand);padding:6.25rem 0;color:var(--white)}
+.cvb-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+.cvb .cv-tag{background:rgba(92,219,211,0.15);color:var(--mint)}
+.cvb-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:768px){.cvb-grid{grid-template-columns:1.05fr 0.95fr;gap:3.5rem}}
+.cvb-eyebrow{font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mint);margin-bottom:1rem}
+.cvb-title{font-family:var(--font);font-weight:700;font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--white);margin:0 0 1.25rem}
+.cvb-title span{color:var(--mint)}
+.cvb-lede{font-size:1.25rem;line-height:1.4;font-weight:600;color:var(--white);margin:0 0 0.75rem;max-width:32rem}
+.cvb-sub{font-size:1rem;line-height:1.6;color:var(--g-400);margin:0 0 2rem;max-width:32rem}
+.cvb-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media(max-width:34rem){.cvb-stats{grid-template-columns:1fr}}
+.cvb-stat{border:0.0625rem solid rgba(92,219,211,0.18);border-radius:0.5rem;padding:1.5rem}
+.cvb-stat-head{font-family:var(--font);font-weight:700;font-size:clamp(1.25rem,1.8vw,1.5rem);line-height:1.3;color:var(--mint)}
+.cvb-stat p{margin:0.75rem 0 0;font-size:1rem;line-height:1.5;color:var(--g-400)}
+.cvb-media{width:100%;border-radius:0.5rem;display:block;aspect-ratio:4/3;max-height:26rem;object-fit:cover}
+
+/* ── Variant 3 · bright, stat band ── */
+.cvc{background:var(--paper);padding:6.25rem 0;color:var(--g-900)}
+.cvc-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+.cvc .cv-tag{background:var(--teal-50);color:var(--teal)}
+.cvc-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:768px){.cvc-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.cvc-eyebrow{font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.cvc-title{font-family:var(--font);font-weight:700;font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--g-900);margin:0 0 1.25rem}
+.cvc-title span{color:var(--teal)}
+.cvc-lede{font-size:1.125rem;line-height:1.7;color:var(--g-700);margin:0 0 2rem;max-width:36rem}
+.cvc-points{display:flex;flex-direction:column;gap:2rem;border-top:0.0625rem solid var(--g-200);padding-top:2rem}
+.cvc-point{display:flex;gap:1rem;align-items:flex-start}
+.cvc-point-icon{flex-shrink:0;width:2.75rem;height:2.75rem;border-radius:0.625rem;background:rgba(1,82,83,0.08);color:var(--teal);display:inline-flex;align-items:center;justify-content:center}
+.cvc-point-icon svg{width:1.375rem;height:1.375rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cvc-band-head{font-family:var(--font);font-weight:700;font-size:1.25rem;line-height:1.25;letter-spacing:-0.02em;color:var(--teal);margin:0}
+.cvc-point p{margin:0.5rem 0 0;font-size:1rem;line-height:1.6;color:var(--g-800)}
+.cvc-media{width:100%;border-radius:0.5rem;overflow:hidden;display:block;aspect-ratio:4/3;max-height:32rem}
+.cvc-media video{width:100%;height:100%;object-fit:cover;display:block}
 
 .system-row{
   display:flex;align-items:center;justify-content:space-between;
@@ -1214,18 +1317,18 @@ ul{list-style:none}
 .products-section{
   background:var(--white);
   color:var(--g-900);
-  padding:4rem 0;
+  padding:6.25rem 0;
 }
 .products-header{
   max-width:var(--content-max);margin:0 auto 2rem;
   padding:0 var(--content-pad-x);
+  text-align:center;
 }
 .products-header .label{color:var(--teal);margin-bottom:1rem}
 .products-header h2{
-  /* Display 3 */
   font-family:var(--font);font-weight:700;
-  font-size:3.5rem;line-height:1.0;
-  letter-spacing:-0.04em;color:var(--g-900);
+  font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;
+  letter-spacing:-0.03em;color:var(--g-900);
 }
 .products-header h2 .topo-accent{
   background:none;-webkit-text-fill-color:currentColor;color:var(--g-900);
@@ -1270,7 +1373,7 @@ ul{list-style:none}
   font-weight:700;color:var(--g-900);
 }
 .product-card-info p{
-  font-size:0.875rem;color:var(--g-700);line-height:1.5;flex:1;
+  font-size:0.875rem;color:var(--g-800);line-height:1.5;flex:1;
 }
 .product-btn{align-self:flex-start;margin-top:0.5rem}
 
@@ -1432,10 +1535,75 @@ ul{list-style:none}
    TECH SPECS — "Neue Features"-style 9-card grid (design system)
 ─────────────────────────────────────────────────────────── */
 .specs{
-  position:relative;padding:4rem 0;
+  position:relative;padding:6.25rem 0;
   background:var(--white);
 }
 .specs-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+
+/* ════ TECHNISCHE DATEN — alternative spec-list design (Variante) ════ */
+.ts2{background:var(--paper);padding:6rem 0;color:var(--g-900)}
+.ts2-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+.ts2-head{text-align:center;margin-bottom:3rem}
+.ts2-title{font-family:var(--font);font-weight:700;font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--g-900);margin:0}
+.ts2-list{display:grid;grid-template-columns:repeat(2,1fr);column-gap:3.5rem;border-top:0.0625rem solid var(--g-200)}
+@media(max-width:48rem){.ts2-list{grid-template-columns:1fr;column-gap:0}}
+.ts2-row{display:flex;gap:1.25rem;align-items:flex-start;padding:1.75rem 0;border-bottom:0.0625rem solid var(--g-200)}
+.ts2-icon{flex-shrink:0;width:2.75rem;height:2.75rem;border-radius:0.625rem;background:rgba(1,82,83,0.08);color:var(--teal);display:inline-flex;align-items:center;justify-content:center}
+.ts2-icon svg{width:1.375rem;height:1.375rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ts2-label{font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--g-600);margin-bottom:0.375rem}
+.ts2-row h3{font-family:var(--font);font-size:1.125rem;font-weight:700;line-height:1.3;color:var(--g-900);margin:0 0 0.375rem}
+.ts2-desc{font-size:1rem;line-height:1.5;color:var(--g-800);margin:0}
+
+/* ════ TECHNISCHE DATEN — device-centered spotlight (Variante) ════ */
+.tx{background:var(--white);padding:6.25rem 0;color:var(--g-900)}
+.tx-inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x)}
+.tx-head{text-align:center;margin-bottom:3.5rem}
+.tx-title{font-family:var(--font);font-weight:700;font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--g-900);margin:0}
+.tx-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:60rem){.tx-grid{grid-template-columns:1fr minmax(12rem,16.8rem) 1fr;gap:3.5rem}}
+.tx-figure{order:-1;max-width:18rem;margin:0 auto}
+@media(min-width:60rem){.tx-figure{order:0;max-width:none;margin:0}}
+.tx-figure img{
+  width:100%;border-radius:0.75rem;display:block;
+  box-shadow:
+    0 0.125rem 0.5rem rgba(1,41,42,0.05),
+    0 1rem 2rem rgba(1,41,42,0.10),
+    0 2.5rem 4.5rem rgba(1,41,42,0.18),
+    0 5rem 7rem rgba(1,41,42,0.10);
+}
+.tx-col{display:flex;flex-direction:column;gap:3.5rem}
+.tx-item{display:flex;gap:1rem;align-items:flex-start}
+.tx-icon{flex-shrink:0;width:2.5rem;height:2.5rem;border-radius:0.625rem;background:rgba(1,82,83,0.08);color:var(--teal);display:inline-flex;align-items:center;justify-content:center}
+.tx-icon svg{width:1.25rem;height:1.25rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tx-label{font-family:var(--font);font-size:0.6875rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--g-600);margin-bottom:0.25rem}
+.tx-item h3{font-family:var(--font);font-size:1.0625rem;font-weight:700;line-height:1.3;color:var(--g-900);margin:0 0 0.25rem}
+.tx-item p{font-size:0.9375rem;line-height:1.5;color:var(--g-800);margin:0}
+
+/* ── entrance animation ── */
+.tx-figure{opacity:0;transform:translateY(1.5rem) scale(0.97);transition:opacity .8s ease, transform .8s ease}
+.tx-figure.visible{opacity:1;transform:none}
+.tx-item{opacity:0;transform:translateY(1.5rem);transition:opacity .6s ease, transform .6s ease}
+.tx-item.visible{opacity:1;transform:none}
+
+@media(min-width:60rem){
+  .tx-col--left .tx-item{flex-direction:row-reverse;text-align:right;transform:translateX(-1.75rem)}
+  .tx-col--right .tx-item{transform:translateX(1.75rem)}
+  .tx-col--left .tx-item.visible,
+  .tx-col--right .tx-item.visible{transform:none}
+  .tx-col .tx-item{position:relative}
+  /* leader line from each spec toward the device — draws in on reveal */
+  .tx-col--left .tx-item::after,
+  .tx-col--right .tx-item::after{content:"";position:absolute;top:1.25rem;width:2.5rem;height:0.09375rem;background:rgba(1,82,83,0.08);transform:scaleX(0);transition:transform .6s ease .2s}
+  .tx-col--left .tx-item::after{left:100%;transform-origin:left center}
+  .tx-col--right .tx-item::after{right:100%;transform-origin:right center}
+  .tx-item.visible::after{transform:scaleX(1)}
+  /* node dot at the device end — fades in after the line */
+  .tx-col--left .tx-item::before,
+  .tx-col--right .tx-item::before{content:"";position:absolute;top:1.0625rem;width:0.4375rem;height:0.4375rem;border-radius:50%;background:rgba(1,82,83,0.08);opacity:0;transition:opacity .4s ease .55s}
+  .tx-col--left .tx-item::before{left:calc(100% + 2.3rem)}
+  .tx-col--right .tx-item::before{right:calc(100% + 2.3rem)}
+  .tx-item.visible::before{opacity:1}
+}
 
 /* Pill badge + heading row above the grid */
 .nf-intro-row{
@@ -1456,10 +1624,10 @@ ul{list-style:none}
 }
 .nf-title{
   font-family:var(--font);font-weight:700;
-  font-size:3.5rem;line-height:1.0;letter-spacing:-0.04em;
+  font-size:clamp(1.875rem,3.6vw,3rem);line-height:1.08;letter-spacing:-0.03em;
   color:var(--black);text-align:center;margin:0;
 }
-.nf-title .nf-accent{color:var(--teal)}
+.nf-title .nf-accent{color:inherit}
 
 /* 3-col card grid with 1px gutters that read as dividers */
 .nf-grid{
@@ -1480,8 +1648,8 @@ ul{list-style:none}
 @media(hover:hover){.nf-card:hover{background:var(--teal-50)}}
 
 .nf-card-num{
-  font-size:0.6875rem;font-weight:600;letter-spacing:0.04em;
-  color:var(--g-400);
+  font-size:0.75rem;font-weight:600;letter-spacing:0.04em;
+  color:var(--g-600);
   transition:color 220ms ease;
 }
 @media(hover:hover){.nf-card:hover .nf-card-num{color:var(--teal)}}
@@ -1513,7 +1681,7 @@ ul{list-style:none}
 @media(hover:hover){.nf-card:hover .nf-card-title{color:var(--teal)}}
 
 .nf-card-desc{
-  font-size:1rem;line-height:1.4;color:var(--g-600);margin:0;
+  font-size:1rem;line-height:1.4;color:var(--g-800);margin:0;
 }
 .spec-combo-divider{
   width:0.0625rem;align-self:stretch;
@@ -1531,8 +1699,8 @@ ul{list-style:none}
 
 /* FAQ — two-column layout from main-page.html */
 .faq{
-  position:relative;padding:0 0 5rem;
-  background:var(--white);
+  position:relative;padding:6.25rem 0;
+  background:var(--paper);
 }
 .faq-inner{
   max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x);
@@ -1540,7 +1708,7 @@ ul{list-style:none}
 }
 .faq-header{margin-bottom:2.5rem;text-align:center}
 .faq-label{
-  font-size:0.875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
   color:var(--teal);margin-bottom:1.25rem;
 }
 .faq-header h2{
@@ -1610,7 +1778,7 @@ ul{list-style:none}
 .faq-answer.open{opacity:1}
 .faq-answer p{
   padding:0 1.5rem 1.75rem 1.5rem;
-  max-width:42rem;color:var(--g-700);line-height:1.7;
+  max-width:42rem;color:var(--g-800);line-height:1.7;
   font-size:1rem;margin:0;
 }
 
@@ -1620,7 +1788,6 @@ ul{list-style:none}
 ─────────────────────────────────────────────────────────── */
 .footer{
   background:#01292A;color:var(--white);
-  margin-bottom:1.25rem;
   font-family:var(--font);
 }
 
@@ -1695,6 +1862,14 @@ ul{list-style:none}
   font-size:1.125rem;font-weight:700;
   color:var(--white);line-height:1.25;margin:0;
 }
+.footer-widerruf-btn{
+  display:inline-flex;align-items:center;align-self:flex-start;
+  background:rgba(255,255,255,0.08);color:var(--white);
+  font-family:var(--font);font-size:0.875rem;font-weight:700;
+  padding:0.625rem 1.125rem;border-radius:0.5rem;
+  text-decoration:none;transition:background 0.2s ease;
+}
+.footer-widerruf-btn:hover{background:rgba(255,255,255,0.14)}
 .footer-col-head{
   font-family:var(--font);
   font-size:1rem;font-weight:700;
@@ -2030,11 +2205,6 @@ ul{list-style:none}
   .hero{min-height:auto;padding-bottom:0}
 
   .intro{padding-top:4rem;padding-bottom:4rem}
-  .topo-section{padding-top:4rem;padding-bottom:4rem}
-  .upgrade{padding-top:4rem;padding-bottom:4rem}
-  .modernize{padding-top:2rem;padding-bottom:2rem}
-  .faq{padding-top:0;padding-bottom:4rem}
-  .products-section{padding-top:4rem;padding-bottom:4rem}
   .footer{padding-top:3rem;padding-bottom:2rem}
 
   .marquee-track{gap:2rem;animation-duration:18s}
@@ -2050,12 +2220,8 @@ ul{list-style:none}
   .hero h1{font-size:clamp(2.1rem, 7.5vw, 3.01875rem)}   /* hero kept 1.5× the mobile-scale */
   .hero-subhead{font-size:clamp(0.7875rem, 2vw, 1.05rem)}/* if present */
   .upgrade-benefits h3{font-size:2.0125rem;line-height:1.18}  /* Display 4 stays */
-  .upgrade-title,
-  .topo-title,
-  .modernize-left h2,
-  .products-header h2,
-  .nf-title,
   .faq-header h2{font-size:2.45rem;line-height:1.08}    /* Display 3 × 0.7 */
+  /* topo-title, modernize-left h2, products-header h2, nf-title use clamp() — no mobile override */
   .topo-headline{font-size:2.0125rem}
   .upgrade-step h3{font-size:1.25rem}                    /* bigger heading on mobile */
   .topo-stat-val{font-size:1.75rem}                      /* topo stat numbers — keep balanced */
@@ -2145,9 +2311,9 @@ ul{list-style:none}
     <a href="https://edelstahl-tuerklingel.de/" class="hdr-logo" aria-label="Metzler — zur Startseite">
       <img src="logo.svg" alt="Metzler" width="180" height="34">
     </a>
-    <button class="hdr-menu-btn" id="menuBtn" type="button" aria-label="Alle Kategorien">
+    <button class="hdr-menu-btn" id="menuBtn" type="button" aria-label="Kategorien">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h12M3 18h18"/></svg>
-      Alle Kategorien
+      Kategorien
     </button>
     <div class="hdr-searchbar" role="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4" stroke-linecap="round"/></svg>
@@ -2348,36 +2514,35 @@ ul{list-style:none}
 </section>
 
 
-<!-- ─── UPGRADE STEPS — moved directly under hero ─── -->
-<section id="upgrade" class="upgrade" aria-label="Upgrade in drei Schritten">
-  <div class="upgrade-inner">
-    <div class="upgrade-card">
-      <h2 class="upgrade-title">In drei Schritten<br><span class="topo-accent">zur XDM10</span></h2>
-      <div class="upgrade-steps" id="upgradeSteps">
-    <div class="upgrade-step">
-      <div class="upgrade-step-head">
-        <div class="upgrade-step-num">1</div>
-        <span class="upgrade-step-rule"></span>
-      </div>
-      <h3 class="upgrade-step-title">Alte Anlage demontieren</h3>
-      <p>Alte Türstation und Innenstationen abschrauben. Die vorhandenen 2-Draht-Leitungen bleiben in der Wand — genau so, wie sie sind.</p>
+<!-- ─── UPGRADE STEPS ─── -->
+<section class="upg" aria-label="Upgrade in drei Schritten (Variante)">
+  <div class="upg-inner">
+    <div class="upg-head">
+      <span class="upg-label">So einfach geht's</span>
+      <h2 class="font-display">In drei Schritten zur XDM10</h2>
+      <p>Alte Anlage raus, neue rein — ohne Stemmen, ohne Neuverkabelung. Die XDM10 nutzt Ihre bestehende 2-Draht-Leitung.</p>
     </div>
-    <div class="upgrade-step">
-      <div class="upgrade-step-head">
-        <div class="upgrade-step-num">2</div>
-        <span class="upgrade-step-rule"></span>
+    <div class="upg-steps">
+      <div class="upg-step">
+        <div class="font-display upg-step-num">01</div>
+        <div class="upg-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 class="font-display">Alte Anlage demontieren</h3>
+        <div class="line"></div>
+        <p>Alte Türstation und Innenstationen abschrauben. Die vorhandenen 2-Draht-Leitungen bleiben in der Wand — genau so, wie sie sind.</p>
       </div>
-      <h3 class="upgrade-step-title">XDM10 anschließen</h3>
-      <p>Verteiler montieren, Kabel anklemmen, Türstation und Innenstationen anschließen. Kein Stemmen, kein Dreck — Plug &amp; Play.</p>
-    </div>
-    <div class="upgrade-step">
-      <div class="upgrade-step-head">
-        <div class="upgrade-step-num">3</div>
-        <span class="upgrade-step-rule"></span>
+      <div class="upg-step">
+        <div class="font-display upg-step-num">02</div>
+        <div class="upg-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v6M15 2v6M5 8h14v3a7 7 0 0 1-14 0V8zM12 18v4"/></svg></div>
+        <h3 class="font-display">XDM10 anschließen</h3>
+        <div class="line"></div>
+        <p>Verteiler montieren, Kabel anklemmen, Türstation und Innenstationen anschließen. Kein Stemmen, kein Dreck — Plug &amp; Play.</p>
       </div>
-      <h3 class="upgrade-step-title">Fertig Sofort nutzen</h3>
-      <p>3-MP-Video, Türöffner, Hik-Connect App — alles funktioniert ab der ersten Sekunde. Keine Konfiguration nötig.</p>
-    </div>
+      <div class="upg-step">
+        <div class="font-display upg-step-num">03</div>
+        <div class="upg-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 11l2 2 4-4"/></svg></div>
+        <h3 class="font-display">Fertig Sofort nutzen</h3>
+        <div class="line"></div>
+        <p>3-MP-Video, Türöffner, Hik-Connect App — alles funktioniert ab der ersten Sekunde. Keine Konfiguration nötig.</p>
       </div>
     </div>
   </div>
@@ -2406,17 +2571,14 @@ ul{list-style:none}
         <p class="topo-body">In bestehenden Gebäuden müssen Sie oft mit eingeschränkten Anschlussmöglichkeiten rechnen. Dank der Möglichkeit, Innenstationen über ein 2-adriges Kabel durchzuschleifen, sind Sie mit der XDM10 für nahezu jedes Szenario gerüstet.</p>
         <div class="topo-stats">
           <div class="topo-stat">
-            <div class="topo-stat-num">01</div>
             <div class="topo-stat-val font-display">2</div>
             <div class="topo-stat-lbl">Adern<small>genügen für das gesamte System</small></div>
           </div>
           <div class="topo-stat">
-            <div class="topo-stat-num">02</div>
             <div class="topo-stat-val font-display">6</div>
             <div class="topo-stat-lbl">Stationen<small>pro Verteiler anschließbar</small></div>
           </div>
           <div class="topo-stat">
-            <div class="topo-stat-num">03</div>
             <div class="topo-stat-val font-display">100<span class="topo-unit">%</span></div>
             <div class="topo-stat-lbl">Bestandsleitung<small>nutzbar — keine Neuverkabelung</small></div>
           </div>
@@ -2543,149 +2705,90 @@ ul{list-style:none}
   </div>
 </section>
 
-<!-- ─── TECH SPECS — 9-feature grid in design-system style ─── -->
-<section id="specs" class="specs" aria-label="Technische Daten">
-  <div class="specs-inner">
-
-    <!-- Heading -->
-    <div class="nf-intro-row">
-      <h2 class="nf-title font-display">Technische <span class="nf-accent">Daten</span></h2>
+<!-- ═══ TECHNISCHE DATEN — Variante (Gerät zentriert, Specs beidseitig) ═══ -->
+<section class="tx" aria-label="Technische Daten — Variante zentriert">
+  <div class="tx-inner">
+    <div class="tx-head">
+      <h2 class="tx-title">Technische Daten</h2>
     </div>
+    <div class="tx-grid">
 
-    <!-- 3×3 spec grid -->
-    <div class="nf-grid">
-
-      <!-- 01 · Kamera -->
-      <div class="nf-card">
-        <span class="nf-card-num">Kamera</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg>
-        </span>
-        <h3 class="nf-card-title">3&nbsp;MP Kamera mit WDR</h3>
-        <p class="nf-card-desc">Sichtfeld 133° × 82° · Videokompression H.264 · IR-Zusatzlicht.</p>
+      <div class="tx-col tx-col--left">
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+          <div><div class="tx-label">Kamera</div><h3>3&nbsp;MP Kamera mit WDR</h3><p>Sichtfeld 133° × 82° · Videokompression H.264 · IR-Zusatzlicht.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg></span>
+          <div><div class="tx-label">Nachtsicht</div><h3>IR-Zusatzlicht</h3><p>Aktivierung bei geringer Beleuchtung · WDR unterstützt.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><div class="tx-label">Schutzklasse</div><h3>IP65 · IK10</h3><p>Außenbereich · Betriebstemperatur −40 °C bis +60 °C.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/></svg></span>
+          <div><div class="tx-label">Verkabelung</div><h3>2-Draht-BUS</h3><p>10/100 Mbps selbstanpassend · bestehende 2-adrige Leitung weiterverwendbar.</p></div>
+        </div>
       </div>
 
-      <!-- 02 · Nachtsicht -->
-      <div class="nf-card">
-        <span class="nf-card-num">Nachtsicht</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-        </span>
-        <h3 class="nf-card-title">IR-Zusatzlicht</h3>
-        <p class="nf-card-desc">Aktivierung bei geringer Beleuchtung · WDR unterstützt.</p>
-      </div>
+      <figure class="tx-figure">
+        <img src="XDM10new.png" alt="Metzler XDM10 Video-Türsprechanlage in RAL 7016 Anthrazit" loading="lazy" decoding="async" width="848" height="1845">
+      </figure>
 
-      <!-- 03 · Schutzklasse -->
-      <div class="nf-card">
-        <span class="nf-card-num">Schutzklasse</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-        </span>
-        <h3 class="nf-card-title">IP65 · IK10</h3>
-        <p class="nf-card-desc">Außenbereich · Betriebstemperatur −40 °C bis +60 °C.</p>
-      </div>
-
-      <!-- 04 · Verkabelung -->
-      <div class="nf-card">
-        <span class="nf-card-num">Verkabelung</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 9V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v9a4 4 0 0 0 8 0V10"/><path d="M3 5h2"/><path d="M3 9h2"/><path d="M15 19h2"/><path d="M19 19h2"/><circle cx="16" cy="6" r="2"/><path d="M14.5 7.5h3"/></svg>
-        </span>
-        <h3 class="nf-card-title">2-Draht-BUS</h3>
-        <p class="nf-card-desc">10/100 Mbps selbstanpassend · bestehende 2-adrige Leitung weiterverwendbar.</p>
-      </div>
-
-      <!-- 05 · Stromversorgung -->
-      <div class="nf-card">
-        <span class="nf-card-num">Stromversorgung</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </span>
-        <h3 class="nf-card-title">48&nbsp;V über XDM10-VT4 · alternativ 12&nbsp;V&nbsp;DC</h3>
-        <p class="nf-card-desc">Stromverbrauch ≤&nbsp;6&nbsp;W · Türsteuerung Relaisausgang 30&nbsp;V&nbsp;DC / 1&nbsp;A.</p>
-      </div>
-
-      <!-- 06 · App-Steuerung -->
-      <div class="nf-card">
-        <span class="nf-card-num">App-Steuerung</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
-        </span>
-        <h3 class="nf-card-title">Hik-Connect (Android &amp; iOS)</h3>
-        <p class="nf-card-desc">Audio G.711 mit Geräusch- und Echounterdrückung · 99 Innenstationen verknüpfbar.</p>
-      </div>
-
-      <!-- 07 · Material -->
-      <div class="nf-card">
-        <span class="nf-card-num">Material</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 22V12"/></svg>
-        </span>
-        <h3 class="nf-card-title">Edelstahlgehäuse mit IK10-Glasfront</h3>
-        <p class="nf-card-desc">Farben: Anthrazit · Schwarz · Grau · Eisenglimmer · Weiß · Wunschfarbe.</p>
-      </div>
-
-      <!-- 08 · Maße -->
-      <div class="nf-card">
-        <span class="nf-card-num">Maße (B × H × T)</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0L2.7 16.7a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg>
-        </span>
-        <h3 class="nf-card-title">13,50 × 29,30 × 4,40&nbsp;cm</h3>
-        <p class="nf-card-desc">Kompakte Aufputz-Türstation für Einbau direkt an der Hauswand.</p>
-      </div>
-
-      <!-- 09 · Gewicht -->
-      <div class="nf-card">
-        <span class="nf-card-num">Gewicht</span>
-        <span class="nf-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6 3h12l3 6c0 2.2-2.7 4-6 4H9c-3.3 0-6-1.8-6-4l3-6Z"/><path d="M12 13v8"/><path d="M8 21h8"/></svg>
-        </span>
-        <h3 class="nf-card-title">1,59&nbsp;kg</h3>
-        <p class="nf-card-desc">Versandgewicht: 2,10&nbsp;kg.</p>
+      <div class="tx-col tx-col--right">
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+          <div><div class="tx-label">Stromversorgung</div><h3>48&nbsp;V über XDM10-VT4 · alternativ 12&nbsp;V&nbsp;DC</h3><p>Stromverbrauch ≤&nbsp;6&nbsp;W · Türsteuerung Relaisausgang 30&nbsp;V&nbsp;DC / 1&nbsp;A.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+          <div><div class="tx-label">App-Steuerung</div><h3>Hik-Connect (Android &amp; iOS)</h3><p>Audio G.711 mit Geräusch- und Echounterdrückung · 99 Innenstationen verknüpfbar.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 22V12"/></svg></span>
+          <div><div class="tx-label">Material</div><h3>Edelstahlgehäuse mit IK10-Glasfront</h3><p>Farben: Anthrazit · Schwarz · Grau · Eisenglimmer · Weiß · Wunschfarbe.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0L2.7 16.7a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg></span>
+          <div><div class="tx-label">Maße (B × H × T)</div><h3>13,50 × 29,30 × 4,40&nbsp;cm</h3><p>Kompakte Aufputz-Türstation für Einbau direkt an der Hauswand.</p></div>
+        </div>
+        <div class="tx-item">
+          <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12l3 6c0 2.2-2.7 4-6 4H9c-3.3 0-6-1.8-6-4l3-6Z"/><path d="M12 13v8"/><path d="M8 21h8"/></svg></span>
+          <div><div class="tx-label">Gewicht</div><h3>1,59&nbsp;kg</h3><p>Versandgewicht: 2,10&nbsp;kg.</p></div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ─── COMPATIBLE SYSTEMS ─── -->
-<section id="compatible" class="modernize" aria-label="Kompatible Alt-Systeme">
-  <div class="modernize-grid">
-    <div class="modernize-left">
-      <div class="modernize-left-sticky">
-        <h2 class="font-display">
-          Alt raus<br>
-          <span class="topo-accent">XDM10</span> rein
-        </h2>
-        <video class="modernize-photo" id="modernizePhoto"
-               src="xdm-glas-kamera-loop.mp4"
-               autoplay muted loop playsinline preload="metadata"
-               aria-label="Metzler XDM10 Türstation – Kamera-Detail"></video>
-      </div>
-    </div>
-    <div class="modernize-right">
-      <div class="topo-eyebrow">Kompatible Alt-Systeme</div>
-
-      <p class="compat-lead">
-        Wenn Ihr Haus eine 2-adrige Klingel- oder Sprechanlage hat,
-        spricht die XDM10 ihre Sprache.
-      </p>
-      <p class="compat-sub">
-        Mit <strong>nahezu jeder</strong> gängigen 2-Draht-Anlage kompatibel — herstellerübergreifend.
-      </p>
-
-      <div class="compat-stats">
-        <div class="compat-stat">
-          <div class="compat-stat-val font-display">30 Jahre</div>
-          <div class="compat-stat-lbl">alte Anlagen ersetzbar<small>Audio- und Video-Sprechanlagen aus den Letzen drei Jahrzehnten ade.</small></div>
-        </div>
-        <div class="compat-stat">
-          <div class="compat-stat-val font-display">Keine</div>
-          <div class="compat-stat-lbl">neuen Kabel nötig<small>Ihre vorhandene 2-Draht-Leitung wird einfach weiterverwendet — kein Stemmen, kein Dreck.</small></div>
+<!-- ═══ KOMPATIBLE ALT-SYSTEME ═══ -->
+<section class="cvc" aria-label="Kompatible Alt-Systeme — Variante 3">
+  <div class="cvc-inner">
+    <div class="cvc-grid">
+      <div class="cvc-content">
+        <div class="cvc-eyebrow">Kompatible Alt-Systeme</div>
+        <h2 class="cvc-title">Alt raus, <span>XDM10</span> rein</h2>
+        <p class="cvc-lede">Wenn Ihr Haus eine 2-adrige Klingel- oder Sprechanlage hat, spricht die XDM10 ihre Sprache. Mit nahezu jeder gängigen 2-Draht-Anlage kompatibel — herstellerübergreifend.</p>
+        <div class="cvc-points">
+          <div class="cvc-point">
+            <span class="cvc-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v4.8l3.2 1.9"/></svg></span>
+            <div class="cvc-point-body"><h3 class="cvc-band-head">30 Jahre alte Anlagen ersetzbar</h3><p>Audio- und Video-Sprechanlagen aus den letzten drei Jahrzehnten ade.</p></div>
+          </div>
+          <div class="cvc-point">
+            <span class="cvc-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/></svg></span>
+            <div class="cvc-point-body"><h3 class="cvc-band-head">Keine neuen Kabel nötig</h3><p>Ihre vorhandene 2-Draht-Leitung wird einfach weiterverwendet — kein Stemmen, kein Dreck.</p></div>
+          </div>
+          <div class="cvc-point">
+            <span class="cvc-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-5.2"/></svg></span>
+            <div class="cvc-point-body"><h3 class="cvc-band-head">Herstellerübergreifend kompatibel</h3><p>Nahezu jede gängige 2-Draht-Anlage — egal welcher Hersteller.</p></div>
+          </div>
         </div>
       </div>
-
+      <div class="cvc-media">
+        <video src="xdm-glas-kamera-loop.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Metzler XDM10 Türstation – Kamera-Detail"></video>
+      </div>
     </div>
   </div>
 </section>
@@ -3016,6 +3119,7 @@ ul{list-style:none}
         <img src="footer/Metzler_Logo_footer.svg" alt="Metzler" class="footer-brand-logo" width="200" height="40">
         <p class="footer-brand-tagline">Edelstahl-Tuerklingel.de ist ein Unternehmen der <a href="https://metzlergmbh.de">Metzler Gruppe</a></p>
         <p class="footer-brand-lead">Der Anbieter für Briefkästen, Sprechanlagen, Türklingeln und Hausnummern.</p>
+        <a href="https://edelstahl-tuerklingel.de/widerrufsformular" class="footer-widerruf-btn">Vertrag widerrufen</a>
         <!-- Follow us + Qualität nested (visible only at <1141px) -->
         <div class="footer-follow-group footer-follow-nested">
           <h3 class="footer-col-head">Follow us</h3>
@@ -3221,6 +3325,7 @@ ul{list-style:none}
       <div class="footer-mob-brand">
         <img class="footer-mob-logo" src="footer/Metzler_Logo_footer.svg" alt="Metzler" width="160" height="28">
         <p class="footer-mob-lead">Der Anbieter für Briefkästen, Sprechanlagen, Türklingeln und Hausnummern.</p>
+        <a href="https://edelstahl-tuerklingel.de/widerrufsformular" class="footer-widerruf-btn">Vertrag widerrufen</a>
         <p class="footer-mob-tagline">Edelstahl-Tuerklingel.de ist ein Unternehmen der <a href="https://metzlergmbh.de">Metzler Gruppe</a></p>
       </div>
 
@@ -3605,6 +3710,11 @@ ul{list-style:none}
   });
   document.querySelectorAll('.benefit-item').forEach(function(b){observer.observe(b)});
   document.querySelectorAll('[data-reveal]').forEach(function(el){observer.observe(el)});
+  document.querySelectorAll('.tx-figure').forEach(function(el){observer.observe(el)});
+  document.querySelectorAll('.tx-item').forEach(function(el,i){
+    el.style.transitionDelay = (i*0.08)+'s';
+    observer.observe(el);
+  });
 
   // ─── Parallax ───
   var heroProduct = document.getElementById('heroProduct');
