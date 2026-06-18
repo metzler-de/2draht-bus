@@ -843,7 +843,7 @@ ul{list-style:none}
 .topo-title{
   /* Display 4 */
   font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.15;
+  font-size:3.5rem;line-height:1.0;
   letter-spacing:-0.04em;color:var(--white);
   margin-bottom:1.5rem;
 }
@@ -972,14 +972,12 @@ ul{list-style:none}
 }
 .upgrade-title{
   font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:0.94;letter-spacing:-0.01em;
+  font-size:3.5rem;line-height:1.0;letter-spacing:-0.04em;
   color:var(--black);margin:0 0 3.5rem;
 }
 .upgrade-title .topo-accent{
   background:none;-webkit-text-fill-color:currentColor;color:var(--teal);
 }
-@media(max-width:56.25rem){.upgrade-title{font-size:2rem}}
-@media(max-width:30rem){.upgrade-title{font-size:1.75rem;line-height:1.05}}
 
 .upgrade-steps{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -1125,7 +1123,7 @@ ul{list-style:none}
 .modernize-left h2{
   /* Display 4 */
   font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.15;
+  font-size:3.5rem;line-height:1.0;
   letter-spacing:-0.04em;color:var(--white);margin-top:1rem;
 }
 .modernize-left h2 .topo-accent{
@@ -1224,9 +1222,9 @@ ul{list-style:none}
 }
 .products-header .label{color:var(--teal);margin-bottom:1rem}
 .products-header h2{
-  /* Display 4 */
+  /* Display 3 */
   font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.15;
+  font-size:3.5rem;line-height:1.0;
   letter-spacing:-0.04em;color:var(--g-900);
 }
 .products-header h2 .topo-accent{
@@ -1458,7 +1456,7 @@ ul{list-style:none}
 }
 .nf-title{
   font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.1;letter-spacing:-0.01em;
+  font-size:3.5rem;line-height:1.0;letter-spacing:-0.04em;
   color:var(--black);text-align:center;margin:0;
 }
 .nf-title .nf-accent{color:var(--teal)}
@@ -1546,9 +1544,9 @@ ul{list-style:none}
   color:var(--teal);margin-bottom:1.25rem;
 }
 .faq-header h2{
-  /* Display 4 */
+  /* Display 3 */
   font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.15;
+  font-size:3.5rem;line-height:1.0;
   letter-spacing:-0.04em;color:var(--g-900);
 }
 .faq-list{width:100%;max-width:54rem}
@@ -2051,13 +2049,13 @@ ul{list-style:none}
   /* ── Mobile heading scale — every heading rendered 30% smaller than desktop ── */
   .hero h1{font-size:clamp(2.1rem, 7.5vw, 3.01875rem)}   /* hero kept 1.5× the mobile-scale */
   .hero-subhead{font-size:clamp(0.7875rem, 2vw, 1.05rem)}/* if present */
-  .upgrade-header h2,
+  .upgrade-benefits h3{font-size:2.0125rem;line-height:1.18}  /* Display 4 stays */
+  .upgrade-title,
   .topo-title,
   .modernize-left h2,
-  .upgrade-benefits h3,
   .products-header h2,
-  .specs-header h2,
-  .faq-header h2{font-size:2.0125rem;line-height:1.18}    /* 2.875rem × 0.7 */
+  .nf-title,
+  .faq-header h2{font-size:2.45rem;line-height:1.08}    /* Display 3 × 0.7 */
   .topo-headline{font-size:2.0125rem}
   .upgrade-step h3{font-size:1.25rem}                    /* bigger heading on mobile */
   .topo-stat-val{font-size:1.75rem}                      /* topo stat numbers — keep balanced */
@@ -2065,8 +2063,6 @@ ul{list-style:none}
   .ds-pc-name,
   .product-card-info h3{font-size:1.05rem}
   .ds-pc-title{font-size:0.9rem;line-height:1rem;height:auto}
-  .specs-header h2,
-  .faq-header h2{font-size:2.0125rem}
 }
 </style>
 </head>
@@ -2356,7 +2352,7 @@ ul{list-style:none}
 <section id="upgrade" class="upgrade" aria-label="Upgrade in drei Schritten">
   <div class="upgrade-inner">
     <div class="upgrade-card">
-      <h2 class="upgrade-title">In drei Schritten <span class="topo-accent">zur XDM10</span></h2>
+      <h2 class="upgrade-title">In drei Schritten<br><span class="topo-accent">zur XDM10</span></h2>
       <div class="upgrade-steps" id="upgradeSteps">
     <div class="upgrade-step">
       <div class="upgrade-step-head">
