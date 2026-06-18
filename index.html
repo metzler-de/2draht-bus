@@ -960,78 +960,64 @@ ul{list-style:none}
   background:var(--white);
   color:var(--g-900);
 }
-.upgrade-header{
-  display:grid;grid-template-columns:repeat(12,1fr);gap:2rem;
-  margin-bottom:2rem;
-  max-width:var(--content-max);margin-left:auto;margin-right:auto;
-  padding:0 var(--content-pad-x);
-}
-.upgrade-header h2{
-  grid-column:span 12;
-  /* Display 4 */
-  font-family:var(--font);font-weight:700;
-  font-size:2.875rem;line-height:1.15;
-  letter-spacing:-0.04em;color:var(--g-900);
-}
-/* Neutralize gradient accent inside this heading */
-.upgrade-header h2 .topo-accent{
-  background:none;-webkit-text-fill-color:currentColor;color:var(--g-900);
-}
-@media(min-width:768px){.upgrade-header h2{grid-column:span 10}}
-
-.upgrade-steps{
-  display:grid;grid-template-columns:1fr;gap:0;
+.upgrade-inner{
   max-width:var(--content-max);margin:0 auto;
   padding:0 var(--content-pad-x);
 }
-@media(min-width:768px){.upgrade-steps{grid-template-columns:repeat(3,1fr)}}
-.upgrade-step{
+.upgrade-card{
   background:transparent;
-  padding:3rem 2rem;
-  display:flex;flex-direction:column;gap:1.5rem;
-  border-right:0.0625rem solid rgba(0,0,0,0.12);
-  opacity:0;transform:translateY(2.5rem);
-  transition:opacity .7s, transform .7s, background .3s;
+  border:none;
+  border-radius:0;
+  padding:0;
 }
-@media(min-width:768px){.upgrade-step{padding:3.5rem 2.5rem;min-height:25rem}}
-.upgrade-step:last-child{border-right:none}
-.upgrade-step.visible{opacity:1;transform:translateY(0)}
-/* Hover only on devices that actually support hover (skip touch) */
-@media(hover:hover){
-  .upgrade-step:hover{background:rgba(1,82,83,0.05)}
+.upgrade-title{
+  font-family:var(--font);font-weight:700;
+  font-size:2.875rem;line-height:0.94;letter-spacing:-0.01em;
+  color:var(--black);margin:0 0 3.5rem;
 }
+.upgrade-title .topo-accent{
+  background:none;-webkit-text-fill-color:currentColor;color:var(--teal);
+}
+@media(max-width:56.25rem){.upgrade-title{font-size:2rem}}
+@media(max-width:30rem){.upgrade-title{font-size:1.75rem;line-height:1.05}}
 
+.upgrade-steps{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:5.25rem;margin:0;
+}
+@media(max-width:56.25rem){.upgrade-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:48rem){.upgrade-steps{grid-template-columns:1fr;gap:2.5rem}}
+.upgrade-step{
+  display:flex;flex-direction:column;padding-top:0.125rem;
+  opacity:0;transform:translateY(2.5rem);
+  transition:opacity .7s, transform .7s;
+}
+.upgrade-step.visible{opacity:1;transform:translateY(0)}
+
+.upgrade-step-head{
+  display:flex;align-items:center;gap:3rem;width:100%;
+  margin-bottom:2rem;
+}
 .upgrade-step-num{
-  font-size:4rem;letter-spacing:-0.04em;line-height:1;
-  font-weight:700;color:var(--teal);
-}
-.upgrade-step-icon{
-  width:2.25rem;height:2.25rem;
-  background:var(--paper);
-  color:var(--teal);
-  border-radius:0.5rem;
   display:inline-flex;align-items:center;justify-content:center;
-  transition:background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+  width:2.125rem;height:2.125rem;border-radius:50%;
+  border:0.125rem solid var(--teal);
+  background:var(--white);color:var(--teal);
+  font-family:var(--font);font-size:0.9375rem;font-weight:800;line-height:1;
+  flex-shrink:0;
 }
-.upgrade-step-icon svg{width:1.125rem;height:1.125rem;stroke-width:1.8}
-@media(hover:hover){
-  .upgrade-step:hover .upgrade-step-icon{
-    background:var(--teal);color:var(--white);transform:translateY(-0.0625rem);
-  }
+.upgrade-step-rule{
+  flex:1;height:0.09375rem;background:var(--teal);
+  opacity:0.35;border-radius:0.0625rem;
 }
-.upgrade-step h3{
-  font-size:clamp(1.5rem,3vw,2rem);
-  letter-spacing:-0.04em;line-height:1.1;
-  color:var(--g-900);
-  font-weight:700;
+.upgrade-step:last-child .upgrade-step-rule{display:none}
+@media(max-width:30rem){.upgrade-step-rule{display:none}}
+.upgrade-step-title{
+  font-family:var(--font);font-size:1.5rem;font-weight:700;
+  line-height:1.3;color:var(--black);margin:0 0 0.5rem;
 }
-.upgrade-step .line{
-  height:0.0625rem;width:3rem;background:var(--teal);
-  transition:width .7s;
-}
-@media(hover:hover){.upgrade-step:hover .line{width:100%}}
 .upgrade-step p{
-  font-size:1rem;color:var(--g-700);line-height:1.6;
+  font-size:1rem;color:var(--g-800);line-height:1.55;margin:0;
 }
 
 .upgrade-benefits{
@@ -1493,24 +1479,24 @@ ul{list-style:none}
   gap:0.375rem;
   transition:background 220ms ease;
 }
-@media(hover:hover){.nf-card:hover{background:var(--teal-75)}}
+@media(hover:hover){.nf-card:hover{background:var(--teal-50)}}
 
 .nf-card-num{
-  font-size:0.6875rem;font-weight:700;letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--g-500);
+  font-size:0.6875rem;font-weight:600;letter-spacing:0.04em;
+  color:var(--g-400);
   transition:color 220ms ease;
 }
 @media(hover:hover){.nf-card:hover .nf-card-num{color:var(--teal)}}
 
 .nf-card-icon{
-  width:2.25rem;height:2.25rem;border-radius:0.5rem;
-  background:var(--paper);color:var(--teal);
+  width:2.5rem;height:2.5rem;border-radius:0.625rem;
+  background:rgba(1,82,83,0.08);color:var(--teal);
   display:inline-flex;align-items:center;justify-content:center;
+  margin-bottom:0.25rem;
   transition:background 220ms ease, color 220ms ease, transform 220ms ease;
 }
 .nf-card-icon svg{
-  width:1.125rem;height:1.125rem;fill:none;
+  width:1.375rem;height:1.375rem;fill:none;
   stroke:currentColor;stroke-width:1.8;
   stroke-linecap:round;stroke-linejoin:round;
 }
@@ -1556,7 +1542,7 @@ ul{list-style:none}
 }
 .faq-header{margin-bottom:2.5rem;text-align:center}
 .faq-label{
-  font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  font-size:0.875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
   color:var(--teal);margin-bottom:1.25rem;
 }
 .faq-header h2{
@@ -2056,16 +2042,6 @@ ul{list-style:none}
   .marquee-track{gap:2rem;animation-duration:18s}
   .marquee-track span{gap:2rem}
 
-  .upgrade-step{padding:1.5rem 0;gap:0.75rem}
-  .upgrade-step h3{font-size:1.25rem}
-  .upgrade-step p{font-size:1rem;line-height:1.6}
-  .upgrade-step-num{font-size:2rem}
-  .upgrade-step-icon{width:2rem;height:2rem;border-radius:0.5rem}
-  .upgrade-step-icon svg{width:1rem;height:1rem}
-  .upgrade-steps{border-left:none;border-right:none}
-  .upgrade-step{border-right:none;border-bottom:0.0625rem solid rgba(0,0,0,0.12)}
-  .upgrade-step:last-child{border-bottom:none}
-
   .product-card-img img{max-width:8.75rem}
   .product-card-info{padding:1.5rem 1.5rem 2rem}
   .product-btn{width:100%}
@@ -2378,39 +2354,35 @@ ul{list-style:none}
 
 <!-- ─── UPGRADE STEPS — moved directly under hero ─── -->
 <section id="upgrade" class="upgrade" aria-label="Upgrade in drei Schritten">
-  <div class="upgrade-header">
-    <h2 class="font-display">In drei Schritten <br><span class="topo-accent">zur XDM10</span></h2>
-  </div>
-  <div class="upgrade-steps" id="upgradeSteps">
+  <div class="upgrade-inner">
+    <div class="upgrade-card">
+      <h2 class="upgrade-title">In drei Schritten <span class="topo-accent">zur XDM10</span></h2>
+      <div class="upgrade-steps" id="upgradeSteps">
     <div class="upgrade-step">
-      <div class="font-display upgrade-step-num">01</div>
-      <div class="upgrade-step-icon">
-        <!-- Icon: wrench (unscrew / demontieren) -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <div class="upgrade-step-head">
+        <div class="upgrade-step-num">1</div>
+        <span class="upgrade-step-rule"></span>
       </div>
-      <h3 class="font-display">Alte Anlage <br>demontieren</h3>
-      <div class="line"></div>
+      <h3 class="upgrade-step-title">Alte Anlage demontieren</h3>
       <p>Alte Türstation und Innenstationen abschrauben. Die vorhandenen 2-Draht-Leitungen bleiben in der Wand — genau so, wie sie sind.</p>
     </div>
     <div class="upgrade-step">
-      <div class="font-display upgrade-step-num">02</div>
-      <div class="upgrade-step-icon">
-        <!-- Icon: power plug (anschließen) -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v6M15 2v6M5 8h14v3a7 7 0 0 1-14 0V8zM12 18v4"/></svg>
+      <div class="upgrade-step-head">
+        <div class="upgrade-step-num">2</div>
+        <span class="upgrade-step-rule"></span>
       </div>
-      <h3 class="font-display">XDM10 <br>anschließen</h3>
-      <div class="line"></div>
+      <h3 class="upgrade-step-title">XDM10 anschließen</h3>
       <p>Verteiler montieren, Kabel anklemmen, Türstation und Innenstationen anschließen. Kein Stemmen, kein Dreck — Plug &amp; Play.</p>
     </div>
     <div class="upgrade-step">
-      <div class="font-display upgrade-step-num">03</div>
-      <div class="upgrade-step-icon">
-        <!-- Icon: smartphone with check (sofort nutzen via App) -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 11l2 2 4-4"/></svg>
+      <div class="upgrade-step-head">
+        <div class="upgrade-step-num">3</div>
+        <span class="upgrade-step-rule"></span>
       </div>
-      <h3 class="font-display">Fertig <br>Sofort nutzen</h3>
-      <div class="line"></div>
+      <h3 class="upgrade-step-title">Fertig Sofort nutzen</h3>
       <p>3-MP-Video, Türöffner, Hik-Connect App — alles funktioniert ab der ersten Sekunde. Keine Konfiguration nötig.</p>
+    </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2579,9 +2551,8 @@ ul{list-style:none}
 <section id="specs" class="specs" aria-label="Technische Daten">
   <div class="specs-inner">
 
-    <!-- Badge + heading -->
+    <!-- Heading -->
     <div class="nf-intro-row">
-      <span class="nf-badge">Datenblatt</span>
       <h2 class="nf-title font-display">Technische <span class="nf-accent">Daten</span></h2>
     </div>
 
@@ -2705,13 +2676,13 @@ ul{list-style:none}
         spricht die XDM10 ihre Sprache.
       </p>
       <p class="compat-sub">
-        In über <strong>99,99&nbsp;%</strong> der Fälle kompatibel — egal welcher Hersteller.
+        Mit <strong>nahezu jeder</strong> gängigen 2-Draht-Anlage kompatibel — herstellerübergreifend.
       </p>
 
       <div class="compat-stats">
         <div class="compat-stat">
           <div class="compat-stat-val font-display">30 Jahre</div>
-          <div class="compat-stat-lbl">alte Anlagen ersetzbar<small>Funktioniert mit Klingel-, Audio- und Video-Sprechanlagen aus drei Jahrzehnten.</small></div>
+          <div class="compat-stat-lbl">alte Anlagen ersetzbar<small>Audio- und Video-Sprechanlagen aus den Letzen drei Jahrzehnten ade.</small></div>
         </div>
         <div class="compat-stat">
           <div class="compat-stat-val font-display">Keine</div>
