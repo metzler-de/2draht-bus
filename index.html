@@ -303,7 +303,7 @@ ul{list-style:none}
 
 /* ── Row 1 · Teal top bar (badges + links) ── */
 .hdr-row1{
-  position:fixed;top:0;left:0;right:0;z-index:52;
+  position:relative;z-index:52;
   background:var(--teal);color:var(--white);
   font-size:0.8125rem;            /* 13px */
   transition:opacity 0.3s;
@@ -328,7 +328,7 @@ ul{list-style:none}
 
 /* ── Row 2 · Logo + Search + Icons ── */
 .hdr-row2{
-  position:fixed;top:2rem;left:0;right:0;z-index:51;  /* below Row 1 (32px) */
+  position:relative;z-index:51;
   background:var(--white);
   border-bottom:0.0625rem solid #eee;
   transition:opacity 0.3s;
@@ -386,7 +386,7 @@ ul{list-style:none}
 
 /* ── Row 3 · Category nav ── */
 .hdr-nav{
-  position:fixed;top:6.5rem;left:0;right:0;z-index:50;  /* below Row 1+2 (32+72=104px) */
+  position:relative;z-index:50;
   background:var(--white);
   border-bottom:0.0625rem solid var(--g-300);
   transition:opacity 0.3s, box-shadow 0.3s;
@@ -470,7 +470,7 @@ ul{list-style:none}
 /* ── Mobile header (<= 768px) ── */
 .hdr-mobile{
   display:none;
-  position:fixed;top:0;left:0;right:0;z-index:55;
+  position:sticky;top:0;z-index:55;
   flex-direction:column;
   transition:opacity 0.3s;
 }
@@ -547,7 +547,7 @@ ul{list-style:none}
 /* ── Mega menu — exact port from main-page.html ── */
 /* Mega menu — exact port of design-system preview.html */
 .mega-menu{
-  position:fixed;top:9.875rem;left:0;right:0;     /* 158px = 32+72+54 */
+  position:absolute;top:9.875rem;left:0;right:0;     /* rides with the document, below the nav */
   background:var(--white);
   border-bottom:0.0625rem solid rgba(0,0,0,0.08);
   padding:2.5rem 0 1.5rem;                        /* 40 0 24 */
@@ -653,25 +653,53 @@ ul{list-style:none}
   position:relative;z-index:10;flex:1;
   display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;
   align-content:center;
-  padding:6.25rem var(--content-pad-x) 2rem;   /* uses shared content padding */
+  padding:2.5rem var(--content-pad-x);   /* symmetric — content vertically centered */
   max-width:var(--content-max);
   width:100%;margin:0 auto;
   box-sizing:border-box;
 }
 @media(min-width:769px){
-  .hero-grid{padding:16.38rem var(--content-pad-x) 5.38rem}
+  .hero-grid{padding:2.5rem var(--content-pad-x)}
 }
 .hero-center{
   grid-column:span 12;
   position:relative;z-index:20;
-  max-width:50%;
+  max-width:44%;
 }
 @media(max-width:768px){.hero-center{max-width:100%}}
+/* Medium displays — bring text & picture closer, give text more room */
+@media(min-width:769px) and (max-width:80rem){
+  .hero-center{max-width:54%}
+  .hero-product{width:44%}
+  .hero-grid{padding-top:5rem}   /* more room below the breadcrumb */
+}
 
 .hero-tagline{
   margin-bottom:1.5rem;
   font-size:0.875rem;letter-spacing:0.15em;color:var(--white);
   font-weight:500;text-transform:uppercase;
+}
+/* Breadcrumbs — design-system style, white for the dark hero */
+.hero-breadcrumbs{
+  position:absolute;top:1.75rem;left:0;right:0;z-index:25;
+  font-family:var(--font);font-size:0.8125rem;line-height:1;
+}
+.hero-breadcrumbs-inner{
+  max-width:var(--content-max);margin:0 auto;padding:0 var(--content-pad-x);
+  display:flex;flex-wrap:wrap;align-items:center;gap:0.375rem;
+  color:rgba(255,255,255,0.6);
+}
+@media(max-width:768px){
+  .hero-breadcrumbs{position:static;padding-top:1.5rem}
+}
+.hero-breadcrumbs a{color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s ease}
+.hero-breadcrumbs a:hover{color:var(--white)}
+.hero-breadcrumbs .sep{color:rgba(255,255,255,0.3)}
+.hero-breadcrumbs .current{color:var(--white);font-weight:500}
+.hero-eyebrow{
+  display:block;font-family:var(--font);
+  font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--mint);margin-bottom:1.25rem;
 }
 .hero h1{
   font-family:var(--font);
@@ -697,7 +725,7 @@ ul{list-style:none}
 
 .hero-desc{
   margin-top:2.5rem;
-  font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.6;
+  font-size:1rem;color:var(--white);line-height:1.6;
 }
 .hero-actions{margin-top:2rem;display:flex;gap:1rem}
 .hero-actions .btn{flex:1;text-align:center}
@@ -707,13 +735,13 @@ ul{list-style:none}
 }
 @media(min-width:768px){
   .hero-product{
-    position:absolute;right:var(--content-pad-x);top:9.875rem;bottom:0;   /* right edge aligns with header content edge */
+    position:absolute;right:var(--content-pad-x);top:0;bottom:0;   /* right edge aligns with header content edge */
     transform:none;
-    width:55%;max-width:42.5rem;z-index:0;
+    width:48%;max-width:38rem;z-index:0;
     display:flex;align-items:center;justify-content:flex-end;        /* image vertically centred at all desktop widths */
   }
   .hero-product img{
-    max-width:90%;max-height:90%;                                    /* 10% smaller than container */
+    max-width:72%;max-height:72%;                                    /* 20% smaller */
     width:auto;height:auto;
     object-fit:contain;object-position:right center;
     display:block;
@@ -888,7 +916,7 @@ ul{list-style:none}
 }
 .topo-body{
   font-size:1rem;line-height:1.6;
-  color:rgba(255,255,255,0.85);
+  color:var(--white);
   margin-bottom:1.75rem;
 }
 /* Feature-tile stats — 3 compact cards side by side */
@@ -1387,7 +1415,7 @@ ul{list-style:none}
   padding:0 var(--content-pad-x) 1.5rem;
   position:relative;z-index:2;
 }
-@media(min-width:768px){.ds-product-cards{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.ds-product-cards{grid-template-columns:repeat(3, minmax(0, 24.0625rem));justify-content:center}}
 @media(max-width:24rem){.ds-product-cards{grid-template-columns:1fr;gap:1rem}} /* tiny phones — one card per row */
 
 .ds-product-card{
@@ -1575,9 +1603,9 @@ ul{list-style:none}
 .tx-item{display:flex;gap:1rem;align-items:flex-start}
 .tx-icon{flex-shrink:0;width:2.5rem;height:2.5rem;border-radius:0.625rem;background:rgba(1,82,83,0.08);color:var(--teal);display:inline-flex;align-items:center;justify-content:center}
 .tx-icon svg{width:1.25rem;height:1.25rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.tx-label{font-family:var(--font);font-size:0.6875rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--g-600);margin-bottom:0.25rem}
-.tx-item h3{font-family:var(--font);font-size:1.0625rem;font-weight:700;line-height:1.3;color:var(--g-900);margin:0 0 0.25rem}
-.tx-item p{font-size:0.9375rem;line-height:1.5;color:var(--g-800);margin:0}
+.tx-label{font-family:var(--font);font-size:0.75rem;font-weight:500;line-height:1.4;letter-spacing:0.14em;text-transform:uppercase;color:var(--g-600);margin-bottom:0.25rem}
+.tx-item h4{font-family:var(--font);font-size:1.125rem;font-weight:700;line-height:1.375;color:var(--g-900);margin:0 0 0.25rem}
+.tx-item p{font-size:1rem;line-height:1.5;color:var(--g-800);margin:0}
 
 /* ── entrance animation ── */
 .tx-figure{opacity:0;transform:translateY(1.5rem) scale(0.97);transition:opacity .8s ease, transform .8s ease}
@@ -2485,10 +2513,18 @@ ul{list-style:none}
   <div class="hero-ambient1" aria-hidden="true"></div>
   <div class="hero-ambient2" aria-hidden="true"></div>
 
+  <nav class="hero-breadcrumbs" aria-label="Breadcrumb">
+    <div class="hero-breadcrumbs-inner">
+      <a href="https://edelstahl-tuerklingel.de/">Startseite</a><span class="sep">/</span>
+      <a href="https://edelstahl-tuerklingel.de/sprechanlagen">Sprechanlagen</a><span class="sep">/</span>
+      <span class="current">2-Draht-BUS System</span>
+    </div>
+  </nav>
   <div class="hero-grid">
-    <div class="hero-center" data-parallax data-speed="-0.3">
+    <div class="hero-center">
+      <span class="hero-eyebrow">2-Draht-BUS System</span>
       <h1 class="font-display">
-        XDM10 <span class="dash">–</span> Smartes Upgrade <br>
+        XDM10 <span class="dash">–</span> Smartes Upgrade
         für Ihre vorhandene <span class="accent">Verkabelung</span>
       </h1>
       <div class="hero-badges">
@@ -2507,7 +2543,7 @@ ul{list-style:none}
     </div>
 
     <div class="hero-product" id="heroProduct">
-      <img src="XDM10.webp" alt="Metzler XDM10 Video-Türsprechanlage 2-Draht-BUS in RAL 7016 Anthrazit" width="1230" height="1224" fetchpriority="high" decoding="async" loading="eager">
+      <img src="XDM10-1button.webp" alt="Metzler XDM10 Video-Türsprechanlage 2-Draht-BUS in RAL 7016 Anthrazit" width="618" height="618" fetchpriority="high" decoding="async" loading="eager">
     </div>
   </div>
 
@@ -2716,19 +2752,19 @@ ul{list-style:none}
       <div class="tx-col tx-col--left">
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
-          <div><div class="tx-label">Kamera</div><h3>3&nbsp;MP Kamera mit WDR</h3><p>Sichtfeld 133° × 82° · Videokompression H.264 · IR-Zusatzlicht.</p></div>
+          <div><div class="tx-label">Kamera</div><h4>3&nbsp;MP Kamera mit WDR</h4><p>Sichtfeld 133° × 82° · Videokompression H.264 · IR-Zusatzlicht.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg></span>
-          <div><div class="tx-label">Nachtsicht</div><h3>IR-Zusatzlicht</h3><p>Aktivierung bei geringer Beleuchtung · WDR unterstützt.</p></div>
+          <div><div class="tx-label">Nachtsicht</div><h4>IR-Zusatzlicht</h4><p>Aktivierung bei geringer Beleuchtung · WDR unterstützt.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <div><div class="tx-label">Schutzklasse</div><h3>IP65 · IK10</h3><p>Außenbereich · Betriebstemperatur −40 °C bis +60 °C.</p></div>
+          <div><div class="tx-label">Schutzklasse</div><h4>IP65 · IK10</h4><p>Außenbereich · Betriebstemperatur −40 °C bis +60 °C.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/></svg></span>
-          <div><div class="tx-label">Verkabelung</div><h3>2-Draht-BUS</h3><p>10/100 Mbps selbstanpassend · bestehende 2-adrige Leitung weiterverwendbar.</p></div>
+          <div><div class="tx-label">Verkabelung</div><h4>2-Draht-BUS</h4><p>10/100 Mbps selbstanpassend · bestehende 2-adrige Leitung weiterverwendbar.</p></div>
         </div>
       </div>
 
@@ -2739,23 +2775,23 @@ ul{list-style:none}
       <div class="tx-col tx-col--right">
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-          <div><div class="tx-label">Stromversorgung</div><h3>48&nbsp;V über XDM10-VT4 · alternativ 12&nbsp;V&nbsp;DC</h3><p>Stromverbrauch ≤&nbsp;6&nbsp;W · Türsteuerung Relaisausgang 30&nbsp;V&nbsp;DC / 1&nbsp;A.</p></div>
+          <div><div class="tx-label">Stromversorgung</div><h4>48&nbsp;V über XDM10-VT4 · alternativ 12&nbsp;V&nbsp;DC</h4><p>Stromverbrauch ≤&nbsp;6&nbsp;W · Türsteuerung Relaisausgang 30&nbsp;V&nbsp;DC / 1&nbsp;A.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
-          <div><div class="tx-label">App-Steuerung</div><h3>Hik-Connect (Android &amp; iOS)</h3><p>Audio G.711 mit Geräusch- und Echounterdrückung · 99 Innenstationen verknüpfbar.</p></div>
+          <div><div class="tx-label">App-Steuerung</div><h4>Hik-Connect (Android &amp; iOS)</h4><p>Audio G.711 mit Geräusch- und Echounterdrückung · 99 Innenstationen verknüpfbar.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 22V12"/></svg></span>
-          <div><div class="tx-label">Material</div><h3>Edelstahlgehäuse mit IK10-Glasfront</h3><p>Farben: Anthrazit · Schwarz · Grau · Eisenglimmer · Weiß · Wunschfarbe.</p></div>
+          <div><div class="tx-label">Material</div><h4>Edelstahlgehäuse mit IK10-Glasfront</h4><p>Farben: Anthrazit · Schwarz · Grau · Eisenglimmer · Weiß · Wunschfarbe.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0L2.7 16.7a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg></span>
-          <div><div class="tx-label">Maße (B × H × T)</div><h3>13,50 × 29,30 × 4,40&nbsp;cm</h3><p>Kompakte Aufputz-Türstation für Einbau direkt an der Hauswand.</p></div>
+          <div><div class="tx-label">Maße (B × H × T)</div><h4>13,50 × 29,30 × 4,40&nbsp;cm</h4><p>Kompakte Aufputz-Türstation für Einbau direkt an der Hauswand.</p></div>
         </div>
         <div class="tx-item">
           <span class="tx-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12l3 6c0 2.2-2.7 4-6 4H9c-3.3 0-6-1.8-6-4l3-6Z"/><path d="M12 13v8"/><path d="M8 21h8"/></svg></span>
-          <div><div class="tx-label">Gewicht</div><h3>1,59&nbsp;kg</h3><p>Versandgewicht: 2,10&nbsp;kg.</p></div>
+          <div><div class="tx-label">Gewicht</div><h4>1,59&nbsp;kg</h4><p>Versandgewicht: 2,10&nbsp;kg.</p></div>
         </div>
       </div>
 
