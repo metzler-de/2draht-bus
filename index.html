@@ -661,7 +661,7 @@ ul{list-style:none}
   box-sizing:border-box;
 }
 @media(min-width:769px){
-  .hero-grid{padding:2.5rem var(--content-pad-x)}
+  .hero-grid{padding:3rem var(--content-pad-x)}   /* symmetric — equal space top & bottom */
 }
 .hero-center{
   grid-column:span 12;
@@ -706,7 +706,7 @@ ul{list-style:none}
 .hero h1{
   font-family:var(--font);
   font-weight:700;
-  font-size:3.5rem;          /* Display 3 */
+  font-size:3rem;
   line-height:1.0;
   letter-spacing:-0.02em;
 }
@@ -737,7 +737,7 @@ ul{list-style:none}
 }
 @media(min-width:768px){
   .hero-product{
-    position:absolute;right:var(--content-pad-x);top:0;bottom:0;   /* right edge aligns with header content edge */
+    position:absolute;right:var(--content-pad-x);top:3rem;bottom:3rem;   /* equal space top & bottom */
     transform:none;
     width:48%;max-width:38rem;z-index:0;
     display:flex;align-items:center;justify-content:flex-end;        /* image vertically centred at all desktop widths */
