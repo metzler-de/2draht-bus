@@ -639,7 +639,30 @@ ul{list-style:none}
   color:var(--white);
 }
 /* Hero fixed at 48rem on all desktop breakpoints */
-@media(min-width:768px){.hero{min-height:48rem}}                       /* 768px */
+@media(min-width:768px){.hero{min-height:48rem}}
+/* Scroll-down hint — only shows when the viewport is too short to show the whole hero */
+.hero-scroll{
+  display:flex;
+  position:fixed;left:50%;bottom:1.5rem;z-index:40;cursor:pointer;
+  transform:translateX(-50%);
+  width:1.625rem;height:2.625rem;border-radius:0.9375rem;
+  border:0.125rem solid rgba(255,255,255,0.45);
+  background:transparent;padding:0.4375rem 0 0;
+  align-items:flex-start;justify-content:center;
+  transition:opacity 0.3s ease, border-color 0.2s ease;
+}
+.hero-scroll:hover{border-color:rgba(255,255,255,0.85)}
+.hero-scroll.hidden{opacity:0;pointer-events:none}
+.hero-scroll-dot{
+  width:0.25rem;height:0.5rem;border-radius:0.25rem;background:#fff;
+  animation:heroScrollDot 1.6s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+@keyframes heroScrollDot{
+  0%{opacity:0;transform:translateY(-0.1875rem)}
+  30%{opacity:1}
+  70%{opacity:1;transform:translateY(0.75rem)}
+  100%{opacity:0;transform:translateY(0.75rem)}
+}                       /* 768px */
 .hero .label{color:rgba(255,255,255,0.7)}
 .hero-ambient1{
   position:absolute;inset:0;
@@ -2549,6 +2572,10 @@ ul{list-style:none}
     </div>
   </div>
 
+  <button class="hero-scroll hidden" type="button" aria-label="Nach unten scrollen">
+    <span class="hero-scroll-dot"></span>
+  </button>
+
 </section>
 
 
@@ -3753,6 +3780,23 @@ ul{list-style:none}
     el.style.transitionDelay = (i*0.08)+'s';
     observer.observe(el);
   });
+
+  // ─── Hero scroll-down hint (shown only when the hero's bottom is below the fold) ───
+  var heroScroll = document.querySelector('.hero-scroll');
+  var heroEl = document.querySelector('.hero');
+  if(heroScroll && heroEl){
+    function updateHeroScroll(){
+      var heroFits = heroEl.getBoundingClientRect().bottom <= window.innerHeight + 2;
+      var scrolled = window.pageYOffset > 60;
+      heroScroll.classList.toggle('hidden', heroFits || scrolled);
+    }
+    heroScroll.addEventListener('click', function(){
+      window.scrollBy({top: Math.round(window.innerHeight*0.85), behavior:'smooth'});
+    });
+    window.addEventListener('scroll', updateHeroScroll, {passive:true});
+    window.addEventListener('resize', updateHeroScroll);
+    updateHeroScroll();
+  }
 
   // ─── Parallax ───
   var heroProduct = document.getElementById('heroProduct');
